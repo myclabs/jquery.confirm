@@ -1,97 +1,169 @@
 <!DOCTYPE html>
 <html>
 
-  <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="jQuery.confirm : Confirm dialogs for buttons and links" />
+<head>
+    <meta charset='utf-8'/>
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+    <title>jquery.confirm : Confirm dialogs for buttons and links with jQuery and Bootstrap</title>
+    <meta name="description" content="jquery.confirm : Confirm dialogs for buttons and links with jQuery and Bootstrap"/>
 
-    <title>jQuery.confirm</title>
-  </head>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/jquery.confirm.js"></script>
+</head>
 
-  <body>
+<body>
 
     <!-- HEADER -->
     <div id="header_wrap" class="outer">
         <header class="inner">
-          <a id="forkme_banner" href="https://github.com/myc-sense/jquery.confirm">View on GitHub</a>
+            <a id="forkme_banner" href="https://github.com/myc-sense/jquery.confirm">View on GitHub</a>
 
-          <h1 id="project_title">jQuery.confirm</h1>
-          <h2 id="project_tagline">Confirm dialogs for buttons and links</h2>
+            <h1 id="project_title">
+                jquery.confirm
+            </h1>
+
+            <h2 id="project_tagline">
+                Confirm dialogs for buttons and links
+            </h2>
 
             <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/myc-sense/jquery.confirm/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/myc-sense/jquery.confirm/tarball/master">Download this project as a tar.gz file</a>
+                <a class="zip_download_link" href="https://github.com/myc-sense/jquery.confirm/zipball/master">Download this project as a
+                    .zip file</a>
+                <a class="tar_download_link" href="https://github.com/myc-sense/jquery.confirm/tarball/master">Download this project as a
+                    tar.gz file</a>
             </section>
         </header>
     </div>
 
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h1>jquery.confirm</h1>
+        <section id="main_content" class="inner">
 
-<p>Confirm dialogs for buttons and links.</p>
+            <h2>Demo</h2>
 
-<h2>Requirements</h2>
+            <p>
+               Link (reload this page) with a simple confirmation:
+            </p>
 
-<ul>
-<li>jQuery &gt; 1.8</li>
-<li>
-<a href="http://twitter.github.com/bootstrap/">Bootstrap</a> 2.* for the modals</li>
-</ul><h2>Usage</h2>
+            <div>
+                <button class="btn btn-large btn-block" id="simpleConfirm">Click me</button>
+            </div>
 
-<div class="highlight"><pre><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"home"</span> <span class="na">class=</span><span class="s">"confirm"</span><span class="nt">&gt;</span>Go to home<span class="nt">&lt;/a&gt;</span>
-</pre></div>
+			<script>
+				$("#simpleConfirm").confirm();
+			</script>
 
-<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s2">".confirm"</span><span class="p">).</span><span class="nx">confirm</span><span class="p">();</span>
-</pre></div>
+            <p>
+                Customized confirmation dialog:
+            </p>
 
-<p>Any click on the link will pop up a dialog asking the user to confirm the action.</p>
+            <div>
+                <button class="btn btn-large btn-block" id="complexConfirm">Click me</button>
+            </div>
 
-<h2>Options</h2>
+            <script>
+                $("#complexConfirm").confirm({
+                    text: "This is very dangerous, you shouldn't do it! Are you very sure?",
+                    confirm: function(button) {
+                        alert("You just confirmed.");
+                    },
+                    cancel: function(button) {
+                        alert("You cancelled.");
+                    },
+                    confirmButton: "Yes I am",
+                    cancelButton: "No"
+				});
+            </script>
 
-<p>List of the options:</p>
+            <h2>
+                Requirements
+            </h2>
 
-<ul>
-<li>text: Text to display in the dialog</li>
-<li>confirm: Handler executed when the user confirms</li>
-<li>cancel: Handler executed when the user cancels</li>
-<li>confirmButton: Label of the confirm button</li>
-<li>cancelButton: Label of the cancel button</li>
-<li>post: If false (default) and no confirm handler is set, redirects the user to the URL of the button/link with a GET request. If true, redirects with a POST request (like a form submission).</li>
-</ul><p>Example:</p>
+            <ul>
+                <li>jQuery &ge; 1.8</li>
+                <li>
+                    <a href="http://twitter.github.com/bootstrap/">Bootstrap</a> 2.* for the modals
+                </li>
+            </ul>
 
-<div class="highlight"><pre><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"confirm"</span> <span class="na">type=</span><span class="s">"button"</span><span class="nt">&gt;</span>Delete the comment<span class="nt">&lt;/button&gt;</span>
-</pre></div>
+            <h2>Usage</h2>
 
-<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="s2">".confirm"</span><span class="p">).</span><span class="nx">confirm</span><span class="p">({</span>
-    <span class="nx">text</span><span class="o">:</span> <span class="s2">"Are you sure you want to delete that comment?"</span><span class="p">,</span>
-    <span class="nx">confirm</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">button</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">delete</span><span class="p">();</span>
-    <span class="p">},</span>
-    <span class="nx">cancel</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">button</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// nothing to do</span>
-    <span class="p">},</span>
-    <span class="nx">confirmButton</span><span class="o">:</span> <span class="s2">"Yes I am"</span><span class="p">,</span>
-    <span class="nx">cancelButton</span><span class="o">:</span> <span class="s2">"No"</span><span class="p">,</span>
-    <span class="nx">post</span><span class="o">:</span> <span class="kc">true</span>
-<span class="p">});</span>
-</pre></div>
-      </section>
+            <p>
+                Download and include jquery.confirm in your head tags:
+            </p>
+
+            <pre class="prettyprint"><code>&lt;script src="js/jquery.confirm.js"&gt;&lt;/script&gt;</code></pre>
+
+            <p>
+                Write your links (also works for buttons):
+            </p>
+
+            <pre class="prettyprint"><code>&lt;a href="home" class="confirm"&gt;Go to home&lt;/a&gt;</code></pre>
+
+            <p>
+                Enable the confirmation dialogs:
+            </p>
+
+            <pre class="prettyprint"><code>$(".confirm").confirm();</code></pre>
+
+            <p>
+                Any click on the link will pop up a dialog asking the user to confirm the action.
+            </p>
+
+
+            <h2>
+                Options
+            </h2>
+
+            <p>List of the options:</p>
+
+            <ul>
+                <li><code>text</code>: Text to display in the dialog</li>
+                <li><code>confirm</code>: Handler executed when the user confirms</li>
+                <li><code>cancel</code>: Handler executed when the user cancels</li>
+                <li><code>confirmButton</code>: Label of the confirm button</li>
+                <li><code>cancelButton</code>: Label of the cancel button</li>
+                <li><code>post</code>: If false (default) and no confirm handler is set, redirects the user to the URL of the button/link with a GET
+                    request. If true, redirects with a POST request (like a form submission).
+                </li>
+            </ul>
+
+            <p>
+                Example:
+            </p>
+
+            <pre class="prettyprint"><code>&lt;button class="confirm" type="button"&gt;Delete the comment&lt;/button&gt;</code></pre>
+
+<pre class="prettyprint"><code>$(".confirm").confirm({
+    text: "Are you sure you want to delete that comment?",
+    confirm: function(button) {
+        // do something
+    },
+    cancel: function(button) {
+        // do something
+    },
+    confirmButton: "Yes I am",
+    cancelButton: "No",
+    post: true
+});
+</code></pre>
+
+        </section>
     </div>
 
     <!-- FOOTER  -->
     <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">jQuery.confirm maintained by <a href="https://github.com/myc-sense">myc-sense</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
+        <footer class="inner">
+            <p class="copyright">jQuery.confirm maintained by <a href="https://github.com/myc-sense">My C-Sense</a></p>
+            <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+        </footer>
     </div>
 
-    
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 
-  </body>
+</body>
 </html>
