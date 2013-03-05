@@ -6,7 +6,7 @@
 (function($) {
 	/**
 	 * Confirm a link or a button
-	 * @param options {text, confirm, cancel, confirmButton, cancelButton}
+	 * @param options {text, confirm, cancel, confirmButton, cancelButton, post}
 	 */
 	$.fn.confirm = function(options) {
 		// Options
@@ -22,9 +22,19 @@
 		if (typeof options.cancelButton === 'undefined') {
 			options.cancelButton = "Cancel";
 		}
+		if (typeof options.post === 'undefined') {
+			options.post = false;
+		}
 		if (typeof options.confirm === 'undefined') {
 			options.confirm = function(o) {
-				window.location = $(o).attr('href');
+				var url = o.attr('href');
+				if (options.post) {
+					var form = $('<form method="post" class="hide" action="' + url + '"></form>');
+					$("body").append(form);
+					form.submit();
+				} else {
+					window.location = url;
+				}
 			};
 		}
 		if (typeof options.cancel === 'undefined') {

@@ -19,7 +19,18 @@ $(".confirm").confirm();
 
 Any click on the link will pop up a dialog asking the user to confirm the action.
 
-## Advanced usage
+## Options
+
+List of the options:
+
+* text: Text to display in the dialog
+* confirm: Handler executed when the user confirms
+* cancel: Handler executed when the user cancels
+* confirmButton: Label of the confirm button
+* cancelButton: Label of the cancel button
+* post: If false (default) and no confirm handler is set, redirects the user to the URL of the button/link with a GET request. If true, redirects with a POST request (like a form submission).
+
+Example:
 
 ```html
 <button class="confirm" type="button">Delete the comment</button>
@@ -35,6 +46,7 @@ $(".confirm").confirm({
         // nothing to do
     },
     confirmButton: "Yes I am",
-    cancelButton: "No"
+    cancelButton: "No",
+    post: true
 });
 ```
