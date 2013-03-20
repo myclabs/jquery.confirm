@@ -1,7 +1,8 @@
 /**
  * jquery.confirm
- * @author My C-Sense
- * @url https://github.com/myc-sense/jquery.confirm
+ * @author My C-Labs
+ * @author Matthieu Napoli <matthieu@mnapoli.fr>
+ * @url https://github.com/myclabs/jquery.confirm
  */
 (function($) {
 	/**
