@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+
+    <title>jquery.confirm demo</title>
+
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="../jquery.confirm.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2>Demo</h2>
+
+        <p>
+            Link (reload this page) with a simple confirmation:
+            <a id="simpleConfirm" href="http://myclabs.github.io/jquery.confirm/"
+               class="btn btn-primary">Click me</a>
+        </p>
+
+        <script>
+            $("#simpleConfirm").confirm();
+        </script>
+
+        <p>
+            Customized confirmation dialog:
+            <button class="btn btn-primary" id="complexConfirm">Click me</button>
+        </p>
+
+        <script>
+            $("#complexConfirm").confirm({
+                text: "This is very dangerous, you shouldn't do it! Are you very sure?",
+                confirm: function(button) {
+                    alert("You just confirmed.");
+                },
+                cancel: function(button) {
+                    alert("You cancelled.");
+                },
+                confirmButton: "Yes I am",
+                cancelButton: "No"
+            });
+        </script>
+
+        <h2>Manual triggering</h2>
+
+        <p>
+            Manual triggering:
+            <button class="btn btn-primary" id="manualTrigger">Click me</button>
+        </p>
+
+        <script>
+            $("#manualTrigger").click(function() {
+                $.confirm({
+                    text: "This is a confirmation dialog manually triggered! Please confirm:",
+                    confirm: function(button) {
+                        alert("You just confirmed.");
+                    },
+                    cancel: function(button) {
+                        alert("You cancelled.");
+                    }
+                });
+            });
+        </script>
+
+    </div>
+
+    <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+
+</body>
+</html>

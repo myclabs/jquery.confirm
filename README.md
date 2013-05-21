@@ -50,3 +50,25 @@ $(".confirm").confirm({
     post: true
 });
 ```
+
+## Manual triggering
+
+You can manually trigger the confirmation dialog:
+
+```javascript
+// Will immediately show the confirmation popup
+$.confirm({
+    text: "Are you sure you want to delete that comment?",
+    confirm: function() {
+        delete();
+    },
+    cancel: function() {
+        // nothing to do
+    }
+});
+```
+
+## Change log
+
+* **1.1.0** Trigger the confirm dialog manually with `$.confirm()`
+* **1.0.0** First release

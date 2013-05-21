@@ -5,11 +5,32 @@
  * @url https://github.com/myclabs/jquery.confirm
  */
 (function($) {
+
 	/**
 	 * Confirm a link or a button
 	 * @param options {text, confirm, cancel, confirmButton, cancelButton, post}
 	 */
 	$.fn.confirm = function(options) {
+		if (typeof options === 'undefined') {
+			options = {};
+		}
+
+		options.button = $(this);
+
+		this.click(function(e) {
+			e.preventDefault();
+
+			$.confirm(options);
+		});
+
+		return this;
+	};
+
+	/**
+	 * Show a confirmation dialog
+	 * @param options {text, confirm, cancel, confirmButton, cancelButton, post}
+	 */
+	$.confirm = function(options) {
 		// Options
 		if (typeof options === 'undefined') {
 			options = {};
@@ -42,38 +63,38 @@
 			options.cancel = function(o) {
 			};
 		}
-		this.click(function(e) {
-			e.preventDefault();
-			var button = $(this);
-			// Modal
-			var buttons = '<button class="confirm btn btn-primary" type="button" data-dismiss="modal">'
-				+ options.confirmButton + '</button>'
-				+ '<button class="cancel btn" type="button" data-dismiss="modal">'
-				+ options.cancelButton + '</button>';
-			var modalHTML = '<div class="modal hide fade" tabindex="-1" role="dialog">'
-				+ '<div class="modal-body">' + options.text + '</div>'
-				+ '<div class="modal-footer">' + buttons + '</div>'
-				+ '</div>';
+		if (typeof options.button === 'undefined') {
+			options.button = null;
+		}
 
-			var modal = $(modalHTML);
+		// Modal
+		var buttons = '<button class="confirm btn btn-primary" type="button" data-dismiss="modal">'
+			+ options.confirmButton + '</button>'
+			+ '<button class="cancel btn" type="button" data-dismiss="modal">'
+			+ options.cancelButton + '</button>';
+		var modalHTML = '<div class="modal hide fade" tabindex="-1" role="dialog">'
+			+ '<div class="modal-body">' + options.text + '</div>'
+			+ '<div class="modal-footer">' + buttons + '</div>'
+			+ '</div>';
 
-			modal.on('shown', function() {
-				modal.find(".btn-primary:first").focus();
-			});
-			modal.on('hidden', function() {
-				modal.remove();
-			});
-			modal.find(".confirm").click(function(e) {
-				options.confirm(button);
-			});
-			modal.find(".cancel").click(function(e) {
-				options.cancel(button);
-			});
+		var modal = $(modalHTML);
 
-			// Show the modal
-			$("body").append(modal);
-			modal.modal();
+		modal.on('shown', function() {
+			modal.find(".btn-primary:first").focus();
 		});
-		return this;
-	};
+		modal.on('hidden', function() {
+			modal.remove();
+		});
+		modal.find(".confirm").click(function(e) {
+			options.confirm(options.button);
+		});
+		modal.find(".cancel").click(function(e) {
+			options.cancel(options.button);
+		});
+
+		// Show the modal
+		$("body").append(modal);
+		modal.modal();
+	}
+
 })(jQuery);
