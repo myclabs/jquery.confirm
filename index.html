@@ -49,7 +49,7 @@
             </p>
 
             <div>
-                <a id="simpleConfirm" href="http://myclabs.github.com/jquery.confirm/" class="btn btn-large btn-block">Click me</a>
+                <a id="simpleConfirm" href="http://myclabs.github.io/jquery.confirm/" class="btn btn-large btn-block">Click me</a>
             </div>
 
 			<script>
@@ -85,7 +85,7 @@
             <ul>
                 <li>jQuery &ge; 1.8</li>
                 <li>
-                    <a href="http://twitter.github.com/bootstrap/">Bootstrap</a> 2.* for the modals
+                    <a href="http://twitter.github.io/bootstrap/">Bootstrap</a> 2.* for the modals
                 </li>
             </ul>
 
@@ -150,6 +150,35 @@
     post: true
 });
 </code></pre>
+
+            <h2>
+                Manual triggering
+            </h2>
+
+            <p>You can manually trigger the confirmation dialog:</p>
+
+<pre class="prettyprint"><code>$.confirm({
+    text: "Are you sure you want to delete that comment?",
+    confirm: function(button) {
+        // do something
+    },
+    cancel: function(button) {
+        // do something
+    }
+});
+</code></pre>
+
+
+            <h2>
+                Change log
+            </h2>
+
+            <ul>
+                <li>
+                    <strong>1.1.0</strong> Trigger the confirm dialog manually with $.confirm()
+                    <strong>1.0.0</strong> First release
+                </li>
+            </ul>
 
         </section>
     </div>
