@@ -70,5 +70,6 @@ $.confirm({
 
 ## Change log
 
+* **1.2.0** Bugfix when `confirm()` is applied to a collection of links
 * **1.1.0** Trigger the confirm dialog manually with `$.confirm()`
 * **1.0.0** First release
