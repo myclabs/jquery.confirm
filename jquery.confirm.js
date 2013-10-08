@@ -35,24 +35,13 @@
      * @param options {text, confirm, cancel, confirmButton, cancelButton, post}
      */
     $.confirm = function (options, e) {
-        // Options
-        if (typeof options === 'undefined') {
-            options = {};
-        }
-        if (typeof options.text === 'undefined') {
-            options.text = "Are you sure?";
-        }
-        if (typeof options.confirmButton === 'undefined') {
-            options.confirmButton = "Yes";
-        }
-        if (typeof options.cancelButton === 'undefined') {
-            options.cancelButton = "Cancel";
-        }
-        if (typeof options.post === 'undefined') {
-            options.post = false;
-        }
-        if (typeof options.confirm === 'undefined') {
-            options.confirm = function (o) {
+        // Default options
+        var settings = $.extend({
+            text: "Are you sure?",
+            confirmButton: "Yes",
+            cancelButton: "Cancel",
+            post: false,
+            confirm: function (o) {
                 var url = e.currentTarget.attributes['href'].value;
                 if (options.post) {
                     var form = $('<form method="post" class="hide" action="' + url + '"></form>');
@@ -61,23 +50,19 @@
                 } else {
                     window.location = url;
                 }
-            };
-        }
-        if (typeof options.cancel === 'undefined') {
-            options.cancel = function (o) {
-            };
-        }
-        if (typeof options.button === 'undefined') {
-            options.button = null;
-        }
+            },
+            cancel: function (o) {
+            },
+            button: null
+        }, options);
 
         // Modal
         var buttons = '<button class="confirm btn btn-primary" type="button" data-dismiss="modal">'
-            + options.confirmButton + '</button>'
+            + settings.confirmButton + '</button>'
             + '<button class="cancel btn" type="button" data-dismiss="modal">'
-            + options.cancelButton + '</button>';
+            + settings.cancelButton + '</button>';
         var modalHTML = '<div class="modal hide fade" tabindex="-1" role="dialog">'
-            + '<div class="modal-body">' + options.text + '</div>'
+            + '<div class="modal-body">' + settings.text + '</div>'
             + '<div class="modal-footer">' + buttons + '</div>'
             + '</div>';
 
@@ -90,10 +75,10 @@
             modal.remove();
         });
         modal.find(".confirm").click(function (e) {
-            options.confirm(options.button);
+            settings.confirm(settings.button);
         });
         modal.find(".cancel").click(function (e) {
-            options.cancel(options.button);
+            settings.cancel(settings.button);
         });
 
         // Show the modal
