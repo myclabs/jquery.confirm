@@ -20,7 +20,7 @@
 		this.click(function(e) {
 			e.preventDefault();
 
-			$.confirm(options);
+			$.confirm(options, e);
 		});
 
 		return this;
@@ -30,7 +30,7 @@
 	 * Show a confirmation dialog
 	 * @param options {text, confirm, cancel, confirmButton, cancelButton, post}
 	 */
-	$.confirm = function(options) {
+	$.confirm = function(options, e) {
 		// Options
 		if (typeof options === 'undefined') {
 			options = {};
@@ -49,7 +49,7 @@
 		}
 		if (typeof options.confirm === 'undefined') {
 			options.confirm = function(o) {
-				var url = o.attr('href');
+				var url = e.currentTarget.attributes['href'].value;
 				if (options.post) {
 					var form = $('<form method="post" class="hide" action="' + url + '"></form>');
 					$("body").append(form);
