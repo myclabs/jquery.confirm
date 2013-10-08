@@ -1,7 +1,11 @@
 /**
  * jquery.confirm
+ *
+ * @version 1.2
+ *
  * @author My C-Labs
  * @author Matthieu Napoli <matthieu@mnapoli.fr>
+ *
  * @url https://github.com/myclabs/jquery.confirm
  */
 (function($) {
