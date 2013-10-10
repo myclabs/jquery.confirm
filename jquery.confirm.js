@@ -61,7 +61,7 @@
             + settings.confirmButton + '</button>'
             + '<button class="cancel btn" type="button" data-dismiss="modal">'
             + settings.cancelButton + '</button>';
-        var modalHTML = '<div class="modal hide fade" tabindex="-1" role="dialog">'
+        var modalHTML = '<div class="confirmation-modal modal hide fade" tabindex="-1" role="dialog">'
             + '<div class="modal-body">' + settings.text + '</div>'
             + '<div class="modal-footer">' + buttons + '</div>'
             + '</div>';
