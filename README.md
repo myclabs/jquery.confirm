@@ -5,7 +5,9 @@ Confirm dialogs for buttons and links.
 ## Requirements
 
 - jQuery > 1.8
-- [Bootstrap](http://twitter.github.com/bootstrap/) 2.* for the modals
+- [Bootstrap](http://twitter.github.com/bootstrap/) 3.* for the modals
+
+If you use Bootstrap 2, you can use any 1.* version. From 2.* and onwards, Bootstrap 3 is required.
 
 ## Usage
 
@@ -24,6 +26,7 @@ Any click on the link will pop up a dialog asking the user to confirm the action
 List of the options:
 
 * `text`: Text to display in the dialog
+* `title`: Title of the dialog (can be empty, the dialog will not have a header then)
 * `confirm`: Handler executed when the user confirms
 * `cancel`: Handler executed when the user cancels
 * `confirmButton`: Label of the confirm button
@@ -39,6 +42,7 @@ Example:
 ```javascript
 $(".confirm").confirm({
     text: "Are you sure you want to delete that comment?",
+    title: "Confirmation required",
     confirm: function(button) {
         delete();
     },
@@ -70,6 +74,7 @@ $.confirm({
 
 ## Change log
 
+* **2.0.0** Bootstrap 3 compatibility (thanks to @RusselVela)
 * **1.3.0** Minified version and specific modal CSS class (thanks to @mrjoelkemp)
 * **1.2.0** Bugfix when `confirm()` is applied to a collection of links
 * **1.1.0** Trigger the confirm dialog manually with `$.confirm()`

@@ -7,7 +7,7 @@
  * @author Matthieu Napoli <matthieu@mnapoli.fr>
  * @author Russel Vela
  *
- * @url https://github.com/myclabs/jquery.confirm
+ * @url http://myclabs.github.io/jquery.confirm/
  */
 (function ($) {
 
