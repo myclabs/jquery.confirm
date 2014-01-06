@@ -1,18 +1,19 @@
-/**
+/*!
  * jquery.confirm
  *
- * @version 1.2
+ * @version 2.0
  *
  * @author My C-Labs
  * @author Matthieu Napoli <matthieu@mnapoli.fr>
+ * @author Russel Vela
  *
- * @url https://github.com/myclabs/jquery.confirm
+ * @url http://myclabs.github.io/jquery.confirm/
  */
 (function ($) {
 
     /**
      * Confirm a link or a button
-     * @param options {text, confirm, cancel, confirmButton, cancelButton, post}
+     * @param options {title, text, confirm, cancel, confirmButton, cancelButton, post}
      */
     $.fn.confirm = function (options) {
         if (typeof options === 'undefined') {
@@ -32,12 +33,13 @@
 
     /**
      * Show a confirmation dialog
-     * @param options {text, confirm, cancel, confirmButton, cancelButton, post}
+     * @param options {title, text, confirm, cancel, confirmButton, cancelButton, post}
      */
     $.confirm = function (options, e) {
         // Default options
         var settings = $.extend({
             text: "Are you sure?",
+            title: "",
             confirmButton: "Yes",
             cancelButton: "Cancel",
             post: false,
@@ -57,15 +59,32 @@
         }, options);
 
         // Modal
-        var buttons = '<button class="confirm btn btn-primary" type="button" data-dismiss="modal">'
-            + settings.confirmButton + '</button>'
-            + '<button class="cancel btn" type="button" data-dismiss="modal">'
-            + settings.cancelButton + '</button>';
-        var modalHTML = '<div class="modal hide fade" tabindex="-1" role="dialog">'
-            + '<div class="modal-body">' + settings.text + '</div>'
-            + '<div class="modal-footer">' + buttons + '</div>'
-            + '</div>';
-
+        var modalHeader = '';
+        if (settings.title !== '') {
+            modalHeader =
+                '<div class=modal-header>' +
+                    '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>' +
+                    '<h4 class="modal-title">' + settings.title+'</h4>' +
+                '</div>';
+        }
+        var modalHTML = 
+                '<div class="confirmation-modal modal fade" tabindex="-1" role="dialog">' +
+                    '<div class="modal-dialog">' +
+                        '<div class="modal-content">' +
+                            modalHeader +
+                            '<div class="modal-body">' + settings.text + '</div>' +
+                            '<div class="modal-footer">' +
+                                '<button class="confirm btn btn-primary" type="button" data-dismiss="modal">' +
+                                    settings.confirmButton +
+                                '</button>' +
+                                '<button class="cancel btn btn-default" type="button" data-dismiss="modal">' +
+                                    settings.cancelButton +
+                                '</div>' +
+                            '</div>' +
+                        '</div>' +
+                    '</div>' +
+                '</div>';
+        
         var modal = $(modalHTML);
 
         modal.on('shown', function () {
@@ -74,16 +93,16 @@
         modal.on('hidden', function () {
             modal.remove();
         });
-        modal.find(".confirm").click(function (e) {
+        modal.find(".confirm").click(function () {
             settings.confirm(settings.button);
         });
-        modal.find(".cancel").click(function (e) {
+        modal.find(".cancel").click(function () {
             settings.cancel(settings.button);
         });
 
         // Show the modal
         $("body").append(modal);
-        modal.modal();
-    }
+        modal.modal('show');
+    };
 
 })(jQuery);

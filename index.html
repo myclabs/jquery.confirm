@@ -8,7 +8,6 @@
     <meta name="description" content="jquery.confirm : Confirm dialogs for buttons and links with jQuery and Bootstrap"/>
 
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-responsive.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script src="js/jquery-1.9.1.min.js"></script>
     <script src="js/jquery.confirm.js"></script>
@@ -48,21 +47,21 @@
                Link (reload this page) with a simple confirmation:
             </p>
 
-            <div>
-                <a id="simpleConfirm" href="http://myclabs.github.io/jquery.confirm/" class="btn btn-large btn-block">Click me</a>
-            </div>
+            <p>
+                <a id="simpleConfirm" href="http://myclabs.github.io/jquery.confirm/" class="btn btn-primary btn-block">Click me</a>
+            </p>
 
-			<script>
-				$("#simpleConfirm").confirm();
-			</script>
+            <script>
+                $("#simpleConfirm").confirm();
+            </script>
 
             <p>
                 Customized confirmation dialog:
             </p>
 
-            <div>
-                <button class="btn btn-large btn-block" id="complexConfirm">Click me</button>
-            </div>
+            <p>
+                <button class="btn btn-primary btn-block" id="complexConfirm">Click me</button>
+            </p>
 
             <script>
                 $("#complexConfirm").confirm({
@@ -75,7 +74,7 @@
                     },
                     confirmButton: "Yes I am",
                     cancelButton: "No"
-				});
+                });
             </script>
 
             <h2>
@@ -84,10 +83,12 @@
 
             <ul>
                 <li>jQuery &ge; 1.8</li>
-                <li>
-                    <a href="http://twitter.github.io/bootstrap/">Bootstrap</a> 2.* for the modals
-                </li>
+                <li><a href="http://getbootstrap.com/">Bootstrap</a> 3 for the modals</li>
             </ul>
+
+            <p>
+                If you use Bootstrap 2, you can use any 1.* version. From 2.* and onwards, Bootstrap 3 is required.
+            </p>
 
             <h2>Usage</h2>
 
@@ -122,6 +123,7 @@
 
             <ul>
                 <li><code>text</code>: Text to display in the dialog</li>
+                <li><code>title</code>: Title of the dialog (can be empty, the dialog will not have a header then)</li>
                 <li><code>confirm</code>: Handler executed when the user confirms</li>
                 <li><code>cancel</code>: Handler executed when the user cancels</li>
                 <li><code>confirmButton</code>: Label of the confirm button</li>
@@ -137,8 +139,11 @@
 
             <pre class="prettyprint"><code>&lt;button class="confirm" type="button"&gt;Delete the comment&lt;/button&gt;</code></pre>
 
+            <p></p>
+
 <pre class="prettyprint"><code>$(".confirm").confirm({
     text: "Are you sure you want to delete that comment?",
+    title: "Confirmation required",
     confirm: function(button) {
         // do something
     },
@@ -174,6 +179,9 @@
             </h2>
 
             <ul>
+                <li>
+                    <strong>2.0.0</strong> Bootstrap 3 compatibility (thanks to @RusselVela)
+                </li>
                 <li>
                     <strong>1.3.0</strong> Minified version and specific modal CSS class (thanks to @mrjoelkemp)
                 </li>
