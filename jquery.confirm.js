@@ -39,7 +39,7 @@
         // Default options
         var settings = $.extend({
             text: "Are you sure?",
-            title:"",
+            title: "",
             confirmButton: "Yes",
             cancelButton: "Cancel",
             post: false,
@@ -59,32 +59,30 @@
         }, options);
 
         // Modal
-        /**
-         * Changes made here, fixed css classes to match bootstrap 3.*/
-        var modalHeader='';
-        if(settings.title!==""){
-            modalHeader='<div class=modal-header>'+
-                                '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>'+
-                                '<h4 class="modal-title">'+settings.title+'</h4>'+
-                            '</div>';
+        var modalHeader = '';
+        if (settings.title !== '') {
+            modalHeader =
+                '<div class=modal-header>' +
+                    '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>' +
+                    '<h4 class="modal-title">' + settings.title+'</h4>' +
+                '</div>';
         }
-        
         var modalHTML = 
-                '<div class="confirmation-modal modal fade" tabindex="-1" role="dialog">'+
-                    '<div class="modal-dialog">'+
-                        '<div class="modal-content">'+
-                            modalHeader+
-                            '<div class="modal-body">' + settings.text + '</div>'+
-                            '<div class="modal-footer">'+
-                                '<button class="confirm btn btn-primary" type="button" data-dismiss="modal">'+
-                                    settings.confirmButton+
-                                '</button>'+
-                                '<button class="cancel btn btn-default" type="button" data-dismiss="modal">'+
-                                    settings.cancelButton+
-                                '</div>'+
-                            '</div>'+
-                        '</div>'+
-                    '</div>'+
+                '<div class="confirmation-modal modal fade" tabindex="-1" role="dialog">' +
+                    '<div class="modal-dialog">' +
+                        '<div class="modal-content">' +
+                            modalHeader +
+                            '<div class="modal-body">' + settings.text + '</div>' +
+                            '<div class="modal-footer">' +
+                                '<button class="confirm btn btn-primary" type="button" data-dismiss="modal">' +
+                                    settings.confirmButton +
+                                '</button>' +
+                                '<button class="cancel btn btn-default" type="button" data-dismiss="modal">' +
+                                    settings.cancelButton +
+                                '</div>' +
+                            '</div>' +
+                        '</div>' +
+                    '</div>' +
                 '</div>';
         
         var modal = $(modalHTML);
@@ -95,10 +93,10 @@
         modal.on('hidden', function () {
             modal.remove();
         });
-        modal.find(".confirm").click(function (e) {
+        modal.find(".confirm").click(function () {
             settings.confirm(settings.button);
         });
-        modal.find(".cancel").click(function (e) {
+        modal.find(".cancel").click(function () {
             settings.cancel(settings.button);
         });
 
