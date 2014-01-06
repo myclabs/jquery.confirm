@@ -1,4 +1,4 @@
-/**
+/*!
  * jquery.confirm
  *
  * @version 2.0

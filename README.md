@@ -5,9 +5,9 @@ Confirm dialogs for buttons and links.
 ## Requirements
 
 - jQuery > 1.8
-- [Bootstrap](http://twitter.github.com/bootstrap/) 3.* for the modals
+- [Bootstrap](http://twitter.github.com/bootstrap/) 3 for the modals
 
-If you use Bootstrap 2, you can use any 1.* version. From 2.* and onwards, Bootstrap 3 is required.
+If you use Bootstrap 2, you can use any 1.x version. From 2.0 and onwards, Bootstrap 3 is required.
 
 ## Usage
 
