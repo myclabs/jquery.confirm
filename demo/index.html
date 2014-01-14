@@ -80,7 +80,7 @@
                 </tr>
             </tbody>
         </table>
-        
+
         <script>
             $("#simpleConfirm").confirm();
             $("#btnSimpleConfirm").confirm();
@@ -88,9 +88,11 @@
                 title:"Delete confirmation",
                 text: "This is very dangerous, you shouldn't do it! Are you really really sure?",
                 confirm: function(button) {
+                    button.fadeOut(2000).fadeIn(2000);
                     alert("You just confirmed.");
                 },
                 cancel: function(button) {
+                    button.fadeOut(2000).fadeIn(2000);
                     alert("You aborted the operation.");
                 },
                 confirmButton: "Yes I am",
@@ -99,10 +101,10 @@
             $("#manualTrigger").click(function() {
                 $.confirm({
                     text: "This is a confirmation dialog manually triggered! Please confirm:",
-                    confirm: function(button) {
+                    confirm: function() {
                         alert("You just confirmed.");
                     },
-                    cancel: function(button) {
+                    cancel: function() {
                         alert("You cancelled.");
                     }
                 });

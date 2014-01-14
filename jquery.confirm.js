@@ -1,12 +1,13 @@
 /*!
  * jquery.confirm
  *
- * @version 2.0
+ * @version 2.0.1
  *
  * @author My C-Labs
  * @author Matthieu Napoli <matthieu@mnapoli.fr>
  * @author Russel Vela
  *
+ * @license MIT
  * @url http://myclabs.github.io/jquery.confirm/
  */
 (function ($) {
@@ -20,12 +21,14 @@
             options = {};
         }
 
-        options.button = $(this);
-
         this.click(function (e) {
             e.preventDefault();
 
-            $.confirm(options, e);
+            var newOptions = $.extend({
+                button: $(this)
+            }, options);
+
+            $.confirm(newOptions, e);
         });
 
         return this;
@@ -67,7 +70,7 @@
                     '<h4 class="modal-title">' + settings.title+'</h4>' +
                 '</div>';
         }
-        var modalHTML = 
+        var modalHTML =
                 '<div class="confirmation-modal modal fade" tabindex="-1" role="dialog">' +
                     '<div class="modal-dialog">' +
                         '<div class="modal-content">' +
@@ -84,7 +87,7 @@
                         '</div>' +
                     '</div>' +
                 '</div>';
-        
+
         var modal = $(modalHTML);
 
         modal.on('shown', function () {
