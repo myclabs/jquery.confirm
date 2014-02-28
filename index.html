@@ -173,12 +173,31 @@
 });
 </code></pre>
 
+            <h2>
+                Global configuration
+            </h2>
+
+            <p>You can configure some options globally, for example if you translate the messages:</p>
+
+<pre class="prettyprint"><code>$.confirm.options = {
+    text: "Are you sure?",
+    title: "",
+    confirmButton: "Yes",
+    cancelButton: "Cancel",
+    post: false
+}
+</code></pre>
 
             <h2>
                 Change log
             </h2>
 
             <ul>
+                <li>
+                    <strong>2.1.0</strong>
+                    <a href="https://github.com/myclabs/jquery.confirm/pull/16">Global options configuration</a>
+                    (thanks to <a href="https://github.com/soulman-is-good">@soulman-is-good</a>)
+                </li>
                 <li>
                     <strong>2.0.0</strong> Bootstrap 3 compatibility (thanks to @RusselVela)
                 </li>
