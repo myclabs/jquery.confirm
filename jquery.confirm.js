@@ -40,25 +40,21 @@
      */
     $.confirm = function (options, e) {
         // Default options
-        var settings = $.extend({
-            text: "Are you sure?",
-            title: "",
-            confirmButton: "Yes",
-            cancelButton: "Cancel",
-            post: false,
+        var settings = $.extend($.confirm.options, {
             confirm: function (o) {
-                var url = e.currentTarget.attributes['href'].value;
-                if (options.post) {
-                    var form = $('<form method="post" class="hide" action="' + url + '"></form>');
-                    $("body").append(form);
-                    form.submit();
-                } else {
-                    window.location = url;
+                var url = e && (('string' === typeof e && e) || (e.currentTarget && e.currentTarget.attributes['href'].value));
+                if (url) {
+                    if (options.post) {
+                        var form = $('<form method="post" class="hide" action="' + url + '"></form>');
+                        $("body").append(form);
+                        form.submit();
+                    } else {
+                        window.location = url;
+                    }
                 }
             },
             cancel: function (o) {
-            },
-            button: null
+            }
         }, options);
 
         // Modal
@@ -108,4 +104,16 @@
         modal.modal('show');
     };
 
+    /**
+     * Globally definable rules
+     * @type {{text: string, title: string, confirmButton: string, cancelButton: string, post: boolean, confirm: Function, cancel: Function, button: null}}
+     */
+    $.confirm.options = {
+        text: "Are you sure?",
+        title: "",
+        confirmButton: "Yes",
+        cancelButton: "Cancel",
+        post: false,
+        button: null
+    }
 })(jQuery);
