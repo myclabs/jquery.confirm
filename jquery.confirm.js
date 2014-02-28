@@ -1,7 +1,7 @@
 /*!
  * jquery.confirm
  *
- * @version 2.0.1
+ * @version 2.1.0
  *
  * @author My C-Labs
  * @author Matthieu Napoli <matthieu@mnapoli.fr>
@@ -54,7 +54,8 @@
                 }
             },
             cancel: function (o) {
-            }
+            },
+            button: null
         }, options);
 
         // Modal
@@ -113,7 +114,6 @@
         title: "",
         confirmButton: "Yes",
         cancelButton: "Cancel",
-        post: false,
-        button: null
+        post: false
     }
 })(jQuery);

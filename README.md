@@ -72,8 +72,23 @@ $.confirm({
 });
 ```
 
+## Global configuration
+
+You can configure some options globally, for example if you translate the messages:
+
+```javascript
+$.confirm.options = {
+    text: "Are you sure?",
+    title: "",
+    confirmButton: "Yes",
+    cancelButton: "Cancel",
+    post: false
+}
+```
+
 ## Change log
 
+* **2.1.0** [Global options configuration](https://github.com/myclabs/jquery.confirm/pull/16) (thanks to [@soulman-is-good](https://github.com/soulman-is-good))
 * **2.0.0** Bootstrap 3 compatibility (thanks to @RusselVela)
 * **1.3.0** Minified version and specific modal CSS class (thanks to @mrjoelkemp)
 * **1.2.0** Bugfix when `confirm()` is applied to a collection of links
