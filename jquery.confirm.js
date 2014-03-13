@@ -79,7 +79,7 @@
                                 '</button>' +
                                 '<button class="cancel btn btn-default" type="button" data-dismiss="modal">' +
                                     settings.cancelButton +
-                                '</div>' +
+                                '</button>' +
                             '</div>' +
                         '</div>' +
                     '</div>' +
