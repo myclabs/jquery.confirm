@@ -2,7 +2,7 @@
 
 Confirm dialogs for buttons and links.
 
-Chat room: https://gitter.im/myclabs/jquery.confirm
+Chat room: [![](https://badges.gitter.im/myclabs/jquery.confirm.png)](https://gitter.im/myclabs/jquery.confirm)
 
 ## Requirements
 
