@@ -11,6 +11,14 @@ Chat room: [![](https://badges.gitter.im/myclabs/jquery.confirm.png)](https://gi
 
 If you use Bootstrap 2, you can use any 1.x version. From 2.0 and onwards, Bootstrap 3 is required.
 
+## Installation
+
+The library can be downloaded manually or installed with Bower:
+
+```
+$ bower install jquery-confirm
+```
+
 ## Usage
 
 ```html
