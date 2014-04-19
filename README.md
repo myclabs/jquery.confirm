@@ -42,6 +42,7 @@ List of the options:
 * `confirmButton`: Label of the confirm button
 * `cancelButton`: Label of the cancel button
 * `post`: If false (default) and no confirm handler is set, redirects the user to the URL of the button/link with a GET request. If true, redirects with a POST request (like a form submission).
+* `okButtonClass`: Name of the class for the "OK" button, defaults to `btn-primary`. Can be any of the [Bootstrap btn-*-classes](http://getbootstrap.com/css/#buttons)
 
 Example:
 
@@ -61,8 +62,22 @@ $(".confirm").confirm({
     },
     confirmButton: "Yes I am",
     cancelButton: "No",
-    post: true
+    post: true,
+    okButtonClass: "btn-danger"
 });
+```
+
+Example for using data attributes:
+
+```html
+<button class="confirm" type="button"
+    data-text="Do you really want to delete user {{username}}?"
+    data-okButtonClass="btn-danger">Delete the user
+</button>
+```
+
+```javascript
+$(".confirm").confirm();
 ```
 
 ## Manual triggering
@@ -92,7 +107,8 @@ $.confirm.options = {
     title: "",
     confirmButton: "Yes",
     cancelButton: "Cancel",
-    post: false
+    post: false,
+    buttonClass: "btn-warning"
 }
 ```
 
