@@ -6,7 +6,6 @@
  * @author My C-Labs
  * @author Matthieu Napoli <matthieu@mnapoli.fr>
  * @author Russel Vela
- * @author Marcus Schwarz
  *
  * @license MIT
  * @url http://myclabs.github.io/jquery.confirm/
