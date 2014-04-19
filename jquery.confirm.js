@@ -40,11 +40,15 @@
      */
     $.confirm = function (options, e) {
         var dataOptions = ['title', 'text', 'confirmButton', 'cancelButton', 'okButtonClass'];
+        var parsedDataOptions = {};
         $.each(dataOptions, function(k, v) {
-            options[v] = options.button.data(v.toLowerCase()) || options[v] || $.confirm.options.defaults[v];
+            var z = options.button.data(v.toLowerCase());
+            if (z) {
+                parsedDataOptions[v] = z;
+            }
         });
         // Default options
-        var settings = $.extend($.confirm.options, {
+        var settings = $.extend($.confirm.options, $.confirm.options.defaults, {
             confirm: function (o) {
                 var url = e && (('string' === typeof e && e) || (e.currentTarget && e.currentTarget.attributes['href'].value));
                 if (url) {
@@ -60,7 +64,7 @@
             cancel: function (o) {
             },
             button: null
-        }, options);
+        }, options, parsedDataOptions);
 
         // Modal
         var modalHeader = '';
@@ -114,6 +118,12 @@
      * @type {{text: string, title: string, confirmButton: string, cancelButton: string, post: boolean, confirm: Function, cancel: Function, button: null, okButtonClass: string}}
      */
     $.confirm.options = {
+        text: "Are you sure?",
+        title: "",
+        confirmButton: "Yes",
+        cancelButton: "Cancel",
+        post: false,
+        okButtonClass: "btn-primary",
         defaults: {
             text: "Are you sure?",
             title: "",
