@@ -78,7 +78,7 @@
                             modalHeader +
                             '<div class="modal-body">' + settings.text + '</div>' +
                             '<div class="modal-footer">' +
-                                '<button class="confirm btn btn-' + settings.okButtonClass + '" type="button" data-dismiss="modal">' +
+                                '<button class="confirm btn ' + settings.okButtonClass + '" type="button" data-dismiss="modal">' +
                                     settings.confirmButton +
                                 '</button>' +
                                 '<button class="cancel btn btn-default" type="button" data-dismiss="modal">' +
@@ -120,7 +120,7 @@
             confirmButton: "Yes",
             cancelButton: "Cancel",
             post: false,
-            okButtonClass: "primary"
+            okButtonClass: "btn-primary"
         }
     }
 })(jQuery);
