@@ -14,18 +14,12 @@
 
     /**
      * Confirm a link or a button
-     * @param options {title, text, confirm, cancel, confirmButton, cancelButton, post, buttonClass}
+     * @param options {title, text, confirm, cancel, confirmButton, cancelButton, post, okButtonClass}
      */
     $.fn.confirm = function (options) {
         if (typeof options === 'undefined') {
             options = {};
         }
-
-        var superThis = this;
-        var dataOptions = ['title', 'text', 'confirmButton', 'cancelButton', 'buttonClass'];
-        $.each(dataOptions, function(k, v) {
-            options[v] = options[v] || superThis.data(v.toLowerCase());
-        });
 
         this.click(function (e) {
             e.preventDefault();
@@ -42,9 +36,13 @@
 
     /**
      * Show a confirmation dialog
-     * @param options {title, text, confirm, cancel, confirmButton, cancelButton, post, buttonClass}
+     * @param options {title, text, confirm, cancel, confirmButton, cancelButton, post, okButtonClass}
      */
     $.confirm = function (options, e) {
+        var dataOptions = ['title', 'text', 'confirmButton', 'cancelButton', 'okButtonClass'];
+        $.each(dataOptions, function(k, v) {
+            options[v] = options.button.data(v.toLowerCase()) || options[v] || $.confirm.options.defaults[v];
+        });
         // Default options
         var settings = $.extend($.confirm.options, {
             confirm: function (o) {
@@ -80,7 +78,7 @@
                             modalHeader +
                             '<div class="modal-body">' + settings.text + '</div>' +
                             '<div class="modal-footer">' +
-                                '<button class="confirm btn btn-' + settings.buttonClass + '" type="button" data-dismiss="modal">' +
+                                '<button class="confirm btn btn-' + settings.okButtonClass + '" type="button" data-dismiss="modal">' +
                                     settings.confirmButton +
                                 '</button>' +
                                 '<button class="cancel btn btn-default" type="button" data-dismiss="modal">' +
@@ -113,14 +111,16 @@
 
     /**
      * Globally definable rules
-     * @type {{text: string, title: string, confirmButton: string, cancelButton: string, post: boolean, confirm: Function, cancel: Function, button: null, buttonClass: string}}
+     * @type {{text: string, title: string, confirmButton: string, cancelButton: string, post: boolean, confirm: Function, cancel: Function, button: null, okButtonClass: string}}
      */
     $.confirm.options = {
-        text: "Are you sure?",
-        title: "",
-        confirmButton: "Yes",
-        cancelButton: "Cancel",
-        post: false,
-        buttonClass: "primary"
+        defaults: {
+            text: "Are you sure?",
+            title: "",
+            confirmButton: "Yes",
+            cancelButton: "Cancel",
+            post: false,
+            okButtonClass: "primary"
+        }
     }
 })(jQuery);
