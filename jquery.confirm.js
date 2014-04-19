@@ -6,6 +6,7 @@
  * @author My C-Labs
  * @author Matthieu Napoli <matthieu@mnapoli.fr>
  * @author Russel Vela
+ * @author Marcus Schwarz
  *
  * @license MIT
  * @url http://myclabs.github.io/jquery.confirm/
@@ -14,12 +15,18 @@
 
     /**
      * Confirm a link or a button
-     * @param options {title, text, confirm, cancel, confirmButton, cancelButton, post}
+     * @param options {title, text, confirm, cancel, confirmButton, cancelButton, post, buttonClass}
      */
     $.fn.confirm = function (options) {
         if (typeof options === 'undefined') {
             options = {};
         }
+
+        var superThis = this;
+        var dataOptions = ['title', 'text', 'confirmButton', 'cancelButton', 'buttonClass'];
+        $.each(dataOptions, function(k, v) {
+            options[v] = options[v] || superThis.data(v.toLowerCase());
+        });
 
         this.click(function (e) {
             e.preventDefault();
@@ -36,7 +43,7 @@
 
     /**
      * Show a confirmation dialog
-     * @param options {title, text, confirm, cancel, confirmButton, cancelButton, post}
+     * @param options {title, text, confirm, cancel, confirmButton, cancelButton, post, buttonClass}
      */
     $.confirm = function (options, e) {
         // Default options
@@ -74,7 +81,7 @@
                             modalHeader +
                             '<div class="modal-body">' + settings.text + '</div>' +
                             '<div class="modal-footer">' +
-                                '<button class="confirm btn btn-primary" type="button" data-dismiss="modal">' +
+                                '<button class="confirm btn btn-' + settings.buttonClass + '" type="button" data-dismiss="modal">' +
                                     settings.confirmButton +
                                 '</button>' +
                                 '<button class="cancel btn btn-default" type="button" data-dismiss="modal">' +
@@ -107,13 +114,14 @@
 
     /**
      * Globally definable rules
-     * @type {{text: string, title: string, confirmButton: string, cancelButton: string, post: boolean, confirm: Function, cancel: Function, button: null}}
+     * @type {{text: string, title: string, confirmButton: string, cancelButton: string, post: boolean, confirm: Function, cancel: Function, button: null, buttonClass: string}}
      */
     $.confirm.options = {
         text: "Are you sure?",
         title: "",
         confirmButton: "Yes",
         cancelButton: "Cancel",
-        post: false
+        post: false,
+        buttonClass: "primary"
     }
 })(jQuery);
