@@ -14,7 +14,7 @@
 
     /**
      * Confirm a link or a button
-     * @param options {title, text, confirm, cancel, confirmButton, cancelButton, post, okButtonClass}
+     * @param options {title, text, confirm, cancel, confirmButton, cancelButton, post, confirmButtonClass}
      */
     $.fn.confirm = function (options) {
         if (typeof options === 'undefined') {
@@ -36,10 +36,10 @@
 
     /**
      * Show a confirmation dialog
-     * @param options {title, text, confirm, cancel, confirmButton, cancelButton, post, okButtonClass}
+     * @param options {title, text, confirm, cancel, confirmButton, cancelButton, post, confirmButtonClass}
      */
     $.confirm = function (options, e) {
-        var dataOptions = ['title', 'text', 'confirmButton', 'cancelButton', 'okButtonClass'];
+        var dataOptions = ['title', 'text', 'confirmButton', 'cancelButton', 'confirmButtonClass'];
         var parsedDataOptions = {};
         $.each(dataOptions, function(k, v) {
             var z = options.button.data(v.toLowerCase());
@@ -82,7 +82,7 @@
                             modalHeader +
                             '<div class="modal-body">' + settings.text + '</div>' +
                             '<div class="modal-footer">' +
-                                '<button class="confirm btn ' + settings.okButtonClass + '" type="button" data-dismiss="modal">' +
+                                '<button class="confirm btn ' + settings.confirmButtonClass + '" type="button" data-dismiss="modal">' +
                                     settings.confirmButton +
                                 '</button>' +
                                 '<button class="cancel btn btn-default" type="button" data-dismiss="modal">' +
@@ -115,7 +115,6 @@
 
     /**
      * Globally definable rules
-     * @type {{text: string, title: string, confirmButton: string, cancelButton: string, post: boolean, confirm: Function, cancel: Function, button: null, okButtonClass: string}}
      */
     $.confirm.options = {
         text: "Are you sure?",
@@ -123,14 +122,14 @@
         confirmButton: "Yes",
         cancelButton: "Cancel",
         post: false,
-        okButtonClass: "btn-primary",
+        confirmButtonClass: "btn-primary",
         defaults: {
             text: "Are you sure?",
             title: "",
             confirmButton: "Yes",
             cancelButton: "Cancel",
             post: false,
-            okButtonClass: "btn-primary"
+            confirmButtonClass: "btn-primary"
         }
     }
 })(jQuery);
