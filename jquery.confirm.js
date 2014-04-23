@@ -1,7 +1,7 @@
 /*!
  * jquery.confirm
  *
- * @version 2.1.0
+ * @version 2.2.0
  *
  * @author My C-Labs
  * @author Matthieu Napoli <matthieu@mnapoli.fr>
@@ -107,10 +107,10 @@
 
         var modal = $(modalHTML);
 
-        modal.on('shown', function () {
+        modal.on('shown.bs.modal', function () {
             modal.find(".btn-primary:first").focus();
         });
-        modal.on('hidden', function () {
+        modal.on('hidden.bs.modal', function () {
             modal.remove();
         });
         modal.find(".confirm").click(function () {
