@@ -117,6 +117,7 @@ $.confirm.options = {
 
 ## Change log
 
+* **2.2.0** Use `data-*` attributes to customize the dialog + change the confirm button HTML class (thanks to [@MarcusSchwarz](https://github.com/MarcusSchwarz)) + bugfix
 * **2.1.0** [Global options configuration](https://github.com/myclabs/jquery.confirm/pull/16) (thanks to [@soulman-is-good](https://github.com/soulman-is-good))
 * **2.0.0** Bootstrap 3 compatibility (thanks to @RusselVela)
 * **1.3.0** Minified version and specific modal CSS class (thanks to @mrjoelkemp)
