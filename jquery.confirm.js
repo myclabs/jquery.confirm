@@ -14,7 +14,7 @@
 
     /**
      * Confirm a link or a button
-     * @param options {{title, text, confirm, cancel, confirmButton, cancelButton, post, confirmButtonClass}}
+     * @param [options] {{title, text, confirm, cancel, confirmButton, cancelButton, post, confirmButtonClass}}
      */
     $.fn.confirm = function (options) {
         if (typeof options === 'undefined') {
@@ -36,8 +36,8 @@
 
     /**
      * Show a confirmation dialog
-     * @param options {{title, text, confirm, cancel, confirmButton, cancelButton, post, confirmButtonClass}}
-     * @param e {Event}
+     * @param [options] {{title, text, confirm, cancel, confirmButton, cancelButton, post, confirmButtonClass}}
+     * @param [e] {Event}
      */
     $.confirm = function (options, e) {
         // Parse options defined with "data-" attributes
