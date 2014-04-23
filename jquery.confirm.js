@@ -14,7 +14,7 @@
 
     /**
      * Confirm a link or a button
-     * @param options {title, text, confirm, cancel, confirmButton, cancelButton, post, confirmButtonClass}
+     * @param options {{title, text, confirm, cancel, confirmButton, cancelButton, post, confirmButtonClass}}
      */
     $.fn.confirm = function (options) {
         if (typeof options === 'undefined') {
@@ -36,20 +36,31 @@
 
     /**
      * Show a confirmation dialog
-     * @param options {title, text, confirm, cancel, confirmButton, cancelButton, post, confirmButtonClass}
+     * @param options {{title, text, confirm, cancel, confirmButton, cancelButton, post, confirmButtonClass}}
+     * @param e {Event}
      */
     $.confirm = function (options, e) {
-        var dataOptions = ['title', 'text', 'confirmButton', 'cancelButton', 'confirmButtonClass'];
-        var parsedDataOptions = {};
-        $.each(dataOptions, function(k, v) {
-            var z = options.button.data(v.toLowerCase());
-            if (z) {
-                parsedDataOptions[v] = z;
-            }
-        });
+        // Parse options defined with "data-" attributes
+        var dataOptions = {};
+        if (options.button) {
+            var dataOptionsMapping = {
+                'title': 'title',
+                'text': 'text',
+                'confirm-button': 'confirmButton',
+                'cancel-button': 'cancelButton',
+                'confirm-button-class': 'confirmButtonClass'
+            };
+            $.each(dataOptionsMapping, function(attributeName, optionName) {
+                var value = options.button.data(attributeName);
+                if (value) {
+                    dataOptions[optionName] = value;
+                }
+            });
+        }
+
         // Default options
-        var settings = $.extend($.confirm.options, $.confirm.options.defaults, {
-            confirm: function (o) {
+        var settings = $.extend({}, $.confirm.options, {
+            confirm: function () {
                 var url = e && (('string' === typeof e && e) || (e.currentTarget && e.currentTarget.attributes['href'].value));
                 if (url) {
                     if (options.post) {
@@ -64,7 +75,7 @@
             cancel: function (o) {
             },
             button: null
-        }, options, parsedDataOptions);
+        }, dataOptions, options);
 
         // Modal
         var modalHeader = '';
@@ -122,14 +133,6 @@
         confirmButton: "Yes",
         cancelButton: "Cancel",
         post: false,
-        confirmButtonClass: "btn-primary",
-        defaults: {
-            text: "Are you sure?",
-            title: "",
-            confirmButton: "Yes",
-            cancelButton: "Cancel",
-            post: false,
-            confirmButtonClass: "btn-primary"
-        }
+        confirmButtonClass: "btn-primary"
     }
 })(jQuery);

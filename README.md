@@ -42,7 +42,7 @@ List of the options:
 * `confirmButton`: Label of the confirm button
 * `cancelButton`: Label of the cancel button
 * `post`: If false (default) and no confirm handler is set, redirects the user to the URL of the button/link with a GET request. If true, redirects with a POST request (like a form submission).
-* `okButtonClass`: Name of the class for the "OK" button, defaults to `btn-primary`. Can be any of the [Bootstrap btn-*-classes](http://getbootstrap.com/css/#buttons)
+* `confirmButtonClass`: Name of the class for the "OK" button, defaults to `btn-primary`. Can be any of the [Bootstrap btn-*-classes](http://getbootstrap.com/css/#buttons)
 
 Example:
 
@@ -63,16 +63,17 @@ $(".confirm").confirm({
     confirmButton: "Yes I am",
     cancelButton: "No",
     post: true,
-    okButtonClass: "btn-danger"
+    confirmButtonClass: "btn-danger"
 });
 ```
 
-Example for using data attributes:
+You can also use `data-` attributes to customize the confirmation dialog:
 
 ```html
 <button class="confirm" type="button"
-    data-text="Do you really want to delete user {{username}}?"
-    data-okButtonClass="btn-danger">Delete the user
+        data-text="Do you really want to delete that comment?"
+        data-confirm-button="Yes I am">
+    Delete the user
 </button>
 ```
 
@@ -96,6 +97,8 @@ $.confirm({
     }
 });
 ```
+
+Remember that if you trigger the confirmation dialog manually, you must provide a `confirm` callback (as shown above).
 
 ## Global configuration
 
