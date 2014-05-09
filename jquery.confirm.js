@@ -41,6 +41,10 @@
      * @param [e] {Event}
      */
     $.confirm = function (options, e) {
+        // Do nothing when active confirm modal.
+        if ($('.confirmation-modal').length > 0)
+            return;
+
         // Parse options defined with "data-" attributes
         var dataOptions = {};
         if (options.button) {
