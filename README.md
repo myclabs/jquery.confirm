@@ -10,9 +10,9 @@ Chat room: [![](https://badges.gitter.im/myclabs/jquery.confirm.png)](https://gi
 ## Requirements
 
 - jQuery > 1.8
-- [Bootstrap](http://twitter.github.com/bootstrap/) 3 for the modals
+- [Bootstrap 3](http://getbootstrap.com/) for the modals
 
-If you use Bootstrap 2, you can use any 1.x version. From 2.0 and onwards, Bootstrap 3 is required.
+If you use [Bootstrap 2](http://twitter.github.com/bootstrap/), you can use any 1.x version. From 2.0 and onwards, Bootstrap 3 is required.
 
 ## Installation
 
