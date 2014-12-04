@@ -1,233 +1,186 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<head>
-    <meta charset='utf-8'/>
+        <title>jquery.confirm</title>
 
-    <title>jquery.confirm : Confirm dialogs for buttons and links with jQuery and Bootstrap</title>
-    <meta name="description" content="jquery.confirm : Confirm dialogs for buttons and links with jQuery and Bootstrap"/>
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/css/highlight.dark.css">
+        <link rel="stylesheet" href="/css/main.css">
 
-    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <script src="js/jquery-1.9.1.min.js"></script>
-    <script src="js/jquery.confirm.js"></script>
-</head>
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="jquery.confirm.min.js"></script>
+    </head>
+    <body>
 
-<body>
+        <header class="navbar navbar-default navbar-fixed-top">
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-            <a id="forkme_banner" href="https://github.com/myclabs/jquery.confirm">View on GitHub</a>
-
-            <h1 id="project_title">
+            <a class="navbar-brand" href="/">
                 jquery.confirm
-            </h1>
+                <small class="hidden-xs hidden-sm">
+                    Confirm dialogs for buttons and links
+                </small>
+            </a>
 
-            <h2 id="project_tagline">
-                Confirm dialogs for buttons and links
-            </h2>
+            <a href="https://github.com/myclabs/jquery.confirm">
+                <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png">
+            </a>
 
-            <section id="downloads">
-                <a class="zip_download_link" href="https://github.com/myclabs/jquery.confirm/zipball/master">Download this project as a
-                    .zip file</a>
-                <a class="tar_download_link" href="https://github.com/myclabs/jquery.confirm/tarball/master">Download this project as a
-                    tar.gz file</a>
-            </section>
         </header>
-    </div>
 
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-        <section id="main_content" class="inner">
+        <main class="container">
+            <section id="content">
 
-            <h2>Demo</h2>
+                <h2>Demo</h2>
 
-            <p>
-               Link (reload this page) with a simple confirmation:
-            </p>
+                <p class="clearfix">
+                    Link (reload this page) with a simple confirmation:
+                    <a id="simpleConfirm" href="/" class="btn btn-warning btn-lg pull-right">
+                        Demo - Click me</a>
+                </p>
 
-            <p>
-                <a id="simpleConfirm" href="http://myclabs.github.io/jquery.confirm/" class="btn btn-primary btn-block">Click me</a>
-            </p>
+                <script>
+                    $("#simpleConfirm").confirm();
+                </script>
 
-            <script>
-                $("#simpleConfirm").confirm();
-            </script>
+                <p class="clearfix">
+                    Customized confirmation dialog:
+                    <button class="btn btn-warning btn-lg pull-right" id="complexConfirm">
+                        Demo - Click me</button>
+                </p>
 
-            <p>
-                Customized confirmation dialog:
-            </p>
+                <script>
+                    $("#complexConfirm").confirm({
+                        text: "This is very dangerous, you shouldn't do it! Are you very sure?",
+                        confirm: function(button) {
+                            alert("You just confirmed.");
+                        },
+                        cancel: function(button) {
+                            alert("You cancelled.");
+                        },
+                        confirmButton: "Yes I am",
+                        cancelButton: "No"
+                    });
+                </script>
 
-            <p>
-                <button class="btn btn-primary btn-block" id="complexConfirm">Click me</button>
-            </p>
+                <h2>Download</h2>
 
-            <script>
-                $("#complexConfirm").confirm({
-                    text: "This is very dangerous, you shouldn't do it! Are you very sure?",
-                    confirm: function(button) {
-                        alert("You just confirmed.");
-                    },
-                    cancel: function(button) {
-                        alert("You cancelled.");
-                    },
-                    confirmButton: "Yes I am",
-                    cancelButton: "No"
-                });
-            </script>
+                <p>
+                    Download <code>jquery.confirm</code> in a zip containing the source and the minified version:
+                </p>
 
-            <h2>
-                Requirements
-            </h2>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p>
+                            <a class="btn btn-primary btn-lg btn-block" href="https://github.com/myclabs/jquery.confirm/archive/master.zip">
+                                Download latest version</a>
+                        </p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p>
+                            <a class="btn btn-primary btn-lg btn-block" href="https://github.com/myclabs/jquery.confirm/releases">
+                                Browse all releases</a>
+                        </p>
+                    </div>
+                </div>
 
-            <ul>
-                <li>jQuery &ge; 1.8</li>
-                <li><a href="http://getbootstrap.com/">Bootstrap</a> 3 for the modals</li>
-            </ul>
-
-            <p>
-                If you use Bootstrap 2, you can use any 1.* version. From 2.* and onwards, Bootstrap 3 is required.
-            </p>
-
-            <h2>Usage</h2>
-
-            <p>
-                Download and include jquery.confirm in your head tags:
-            </p>
-
-            <pre class="prettyprint"><code>&lt;script src="js/jquery.confirm.js"&gt;&lt;/script&gt;</code></pre>
-
-            <p>
-                Write your links (also works for buttons):
-            </p>
-
-            <pre class="prettyprint"><code>&lt;a href="home" class="confirm"&gt;Go to home&lt;/a&gt;</code></pre>
-
-            <p>
-                Enable the confirmation dialogs:
-            </p>
-
-            <pre class="prettyprint"><code>$(".confirm").confirm();</code></pre>
-
-            <p>
-                Any click on the link will pop up a dialog asking the user to confirm the action.
-            </p>
-
-
-            <h2>
-                Options
-            </h2>
-
-            <p>List of the options:</p>
-
-            <ul>
-                <li><code>text</code>: Text to display in the dialog</li>
-                <li><code>title</code>: Title of the dialog (can be empty, the dialog will not have a header then)</li>
-                <li><code>confirm</code>: Handler executed when the user confirms</li>
-                <li><code>cancel</code>: Handler executed when the user cancels</li>
-                <li><code>confirmButton</code>: Label of the confirm button</li>
-                <li><code>cancelButton</code>: Label of the cancel button</li>
-                <li><code>post</code>: If false (default) and no confirm handler is set, redirects the user to the URL of the button/link with a GET
-                    request. If true, redirects with a POST request (like a form submission).
-                </li>
-            </ul>
-
-            <p>
-                Example:
-            </p>
-
-            <pre class="prettyprint"><code>&lt;button class="confirm" type="button"&gt;Delete the comment&lt;/button&gt;</code></pre>
-
-            <p></p>
-
-<pre class="prettyprint"><code>$(".confirm").confirm({
+                <h2>jquery.confirm</h2>
+<p>Confirm dialogs for buttons and links.</p>
+<p><a href="http://isitmaintained.com/project/myclabs/jquery.confirm" title="Average time to resolve an issue"><img alt="Average time to resolve an issue" src="http://isitmaintained.com/badge/resolution/myclabs/jquery.confirm.svg" /></a>
+<a href="http://isitmaintained.com/project/myclabs/jquery.confirm" title="Percentage of issues still open"><img alt="Percentage of issues still open" src="http://isitmaintained.com/badge/open/myclabs/jquery.confirm.svg" /></a></p>
+<p>Chat room: <a href="https://gitter.im/myclabs/jquery.confirm"><img alt="" src="https://badges.gitter.im/myclabs/jquery.confirm.png" /></a></p>
+<h2>Requirements</h2>
+<ul>
+<li>jQuery > 1.8</li>
+<li><a href="http://getbootstrap.com/">Bootstrap 3</a> for the modals</li>
+</ul>
+<p>If you use <a href="http://twitter.github.com/bootstrap/">Bootstrap 2</a>, you can use any 1.x version. From 2.0 and onwards, Bootstrap 3 is required.</p>
+<h2>Installation</h2>
+<p>The library can be downloaded manually or installed with Bower:</p>
+<pre><code>$ bower install jquery-confirm</code></pre>
+<h2>Usage</h2>
+<pre><code class="language-html">&lt;a href="home" class="confirm"&gt;Go to home&lt;/a&gt;</code></pre>
+<pre><code class="language-javascript">$(".confirm").confirm();</code></pre>
+<p>Any click on the link will pop up a dialog asking the user to confirm the action.</p>
+<h2>Options</h2>
+<p>List of the options:</p>
+<ul>
+<li><code>text</code>: Text to display in the dialog</li>
+<li><code>title</code>: Title of the dialog (can be empty, the dialog will not have a header then)</li>
+<li><code>confirm</code>: Handler executed when the user confirms</li>
+<li><code>cancel</code>: Handler executed when the user cancels</li>
+<li><code>confirmButton</code>: Label of the confirm button</li>
+<li><code>cancelButton</code>: Label of the cancel button</li>
+<li><code>post</code>: If false (default) and no confirm handler is set, redirects the user to the URL of the button/link with a GET request. If true, redirects with a POST request (like a form submission).</li>
+<li><code>confirmButtonClass</code>: HTML class for the confirmation button, defaults to <code>btn-primary</code>.</li>
+</ul>
+<p>Example:</p>
+<pre><code class="language-html">&lt;button class="confirm" type="button"&gt;Delete the comment&lt;/button&gt;</code></pre>
+<pre><code class="language-javascript">$(".confirm").confirm({
     text: "Are you sure you want to delete that comment?",
     title: "Confirmation required",
     confirm: function(button) {
-        // do something
+        delete();
     },
     cancel: function(button) {
-        // do something
+        // nothing to do
     },
     confirmButton: "Yes I am",
     cancelButton: "No",
-    post: true
-});
-</code></pre>
-
-            <h2>
-                Manual triggering
-            </h2>
-
-            <p>You can manually trigger the confirmation dialog:</p>
-
-<pre class="prettyprint"><code>$.confirm({
+    post: true,
+    confirmButtonClass: "btn-danger"
+});</code></pre>
+<p>You can also use <code>data-</code> attributes to customize the confirmation dialog:</p>
+<pre><code class="language-html">&lt;button class="confirm" type="button"
+        data-text="Do you really want to delete that comment?"
+        data-confirm-button="Yes I am"&gt;
+    Delete the user
+&lt;/button&gt;</code></pre>
+<pre><code class="language-javascript">$(".confirm").confirm();</code></pre>
+<h2>Manual triggering</h2>
+<p>You can manually trigger the confirmation dialog:</p>
+<pre><code class="language-javascript">// Will immediately show the confirmation popup
+$.confirm({
     text: "Are you sure you want to delete that comment?",
-    confirm: function(button) {
-        // do something
+    confirm: function() {
+        delete();
     },
-    cancel: function(button) {
-        // do something
+    cancel: function() {
+        // nothing to do
     }
-});
-</code></pre>
-
-            <h2>
-                Global configuration
-            </h2>
-
-            <p>You can configure some options globally, for example if you translate the messages:</p>
-
-<pre class="prettyprint"><code>$.confirm.options = {
+});</code></pre>
+<p>Remember that if you trigger the confirmation dialog manually, you must provide a <code>confirm</code> callback (as shown above).</p>
+<h2>Global configuration</h2>
+<p>You can configure some options globally, for example if you translate the messages:</p>
+<pre><code class="language-javascript">$.confirm.options = {
     text: "Are you sure?",
     title: "",
     confirmButton: "Yes",
     cancelButton: "Cancel",
-    post: false
-}
-</code></pre>
+    post: false,
+    confirmButtonClass: "btn-warning"
+}</code></pre>
+<h2>Contributing</h2>
+<p>Pull requests and bug reports are welcome! Be aware that you do not need to generate the minified version yourself,
+it will be generated by a release manager (for security reasons).</p>
+<h2>Change log</h2>
+<p><a href="https://github.com/myclabs/jquery.confirm/releases">View the changelog</a>.</p>
 
-            <h2>
-                Change log
-            </h2>
+            </section>
+        </main>
 
-            <ul>
-                <li>
-                    <strong>2.1.0</strong>
-                    <a href="https://github.com/myclabs/jquery.confirm/pull/16">Global options configuration</a>
-                    (thanks to <a href="https://github.com/soulman-is-good">@soulman-is-good</a>)
-                </li>
-                <li>
-                    <strong>2.0.0</strong> Bootstrap 3 compatibility (thanks to @RusselVela)
-                </li>
-                <li>
-                    <strong>1.3.0</strong> Minified version and specific modal CSS class (thanks to @mrjoelkemp)
-                </li>
-                <li>
-                    <strong>1.2.0</strong> Bugfix when confirm() is applied to a collection of links
-                </li>
-                <li>
-                    <strong>1.1.0</strong> Trigger the confirm dialog manually with $.confirm()
-                </li>
-                <li>
-                    <strong>1.0.0</strong> First release
-                </li>
-            </ul>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+        <script src="http://yastatic.net/highlightjs/8.2/highlight.min.js"></script>
 
-        </section>
-    </div>
+        <script>
+            $(function() {
+                // Syntax highlighting
+                hljs.initHighlightingOnLoad();
+            });
+        </script>
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-        <footer class="inner">
-            <p class="copyright">jQuery.confirm maintained by <a href="https://github.com/myclabs">My C-Labs</a></p>
-            <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-        </footer>
-    </div>
-
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
-
-</body>
+    </body>
 </html>
