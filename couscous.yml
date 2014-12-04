@@ -1,3 +1,5 @@
+baseUrl: http://myclabs.github.io/jquery.confirm/
+
 title: jquery.confirm
 subTitle: Confirm dialogs for buttons and links
 
