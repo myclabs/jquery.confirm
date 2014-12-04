@@ -2,3 +2,4 @@
 .idea/*
 /nbproject/private/
 yuicompressor*.jar
+/.couscous

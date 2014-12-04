@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>{{ title }}</title>
+
+        <link rel="stylesheet" href="{{ baseUrl }}/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ baseUrl }}/css/font-awesome.min.css">
+        <link rel="stylesheet" href="{{ baseUrl }}/css/highlight.dark.css">
+        <link rel="stylesheet" href="{{ baseUrl }}/css/main.css">
+
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="jquery.confirm.min.js"></script>
+    </head>
+    <body>
+
+        <header class="navbar navbar-default navbar-fixed-top">
+
+            <a class="navbar-brand" href="{{ baseUrl }}/">
+                {{ title }}
+                <small class="hidden-xs hidden-sm">
+                    {{ subTitle }}
+                </small>
+            </a>
+
+            <a href="https://github.com/{{ github.user }}/{{ github.repo }}">
+                <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png">
+            </a>
+
+        </header>
+
+        <main class="container">
+            <section id="content">
+
+                <h2>Demo</h2>
+
+                <p class="clearfix">
+                    Link (reload this page) with a simple confirmation:
+                    <a id="simpleConfirm" href="{{ baseUrl }}/" class="btn btn-warning btn-lg pull-right">
+                        Demo - Click me</a>
+                </p>
+
+                <script>
+                    $("#simpleConfirm").confirm();
+                </script>
+
+                <p class="clearfix">
+                    Customized confirmation dialog:
+                    <button class="btn btn-warning btn-lg pull-right" id="complexConfirm">
+                        Demo - Click me</button>
+                </p>
+
+                <script>
+                    $("#complexConfirm").confirm({
+                        text: "This is very dangerous, you shouldn't do it! Are you very sure?",
+                        confirm: function(button) {
+                            alert("You just confirmed.");
+                        },
+                        cancel: function(button) {
+                            alert("You cancelled.");
+                        },
+                        confirmButton: "Yes I am",
+                        cancelButton: "No"
+                    });
+                </script>
+
+                <h2>Download</h2>
+
+                <p>
+                    Download <code>jquery.confirm</code> in a zip containing the source and the minified version:
+                </p>
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p>
+                            <a class="btn btn-primary btn-lg btn-block" href="https://github.com/myclabs/jquery.confirm/archive/master.zip">
+                                Download latest version</a>
+                        </p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p>
+                            <a class="btn btn-primary btn-lg btn-block" href="https://github.com/myclabs/jquery.confirm/releases">
+                                Browse all releases</a>
+                        </p>
+                    </div>
+                </div>
+
+                {{ content|raw }}
+
+            </section>
+        </main>
+
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+        <script src="http://yastatic.net/highlightjs/8.2/highlight.min.js"></script>
+
+        <script>
+            $(function() {
+                // Syntax highlighting
+                hljs.initHighlightingOnLoad();
+            });
+        </script>
+
+    </body>
+</html>

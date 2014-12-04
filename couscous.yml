@@ -1,0 +1,12 @@
+title: jquery.confirm
+subTitle: Confirm dialogs for buttons and links
+
+github:
+    user: myclabs
+    repo: jquery.confirm
+
+scripts:
+    before:
+        - cp jquery.confirm.min.js website/
+    after:
+        - rm website/jquery.confirm.min.js
