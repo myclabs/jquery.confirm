@@ -53,7 +53,8 @@
                 'text': 'text',
                 'confirm-button': 'confirmButton',
                 'cancel-button': 'cancelButton',
-                'confirm-button-class': 'confirmButtonClass'
+                'confirm-button-class': 'confirmButtonClass',
+                'cancel-button-class': 'cancelButtonClass'
             };
             $.each(dataOptionsMapping, function(attributeName, optionName) {
                 var value = options.button.data(attributeName);
@@ -101,7 +102,7 @@
                                 '<button class="confirm btn ' + settings.confirmButtonClass + '" type="button" data-dismiss="modal">' +
                                     settings.confirmButton +
                                 '</button>' +
-                                '<button class="cancel btn btn-default" type="button" data-dismiss="modal">' +
+                                '<button class="cancel btn ' + settings.cancelButtonClass + '" type="button" data-dismiss="modal">' +
                                     settings.cancelButton +
                                 '</button>' +
                             '</div>' +
@@ -138,6 +139,7 @@
         confirmButton: "Yes",
         cancelButton: "Cancel",
         post: false,
-        confirmButtonClass: "btn-primary"
+        confirmButtonClass: "btn-primary",
+        cancelButtonClass: "btn-default"
     }
 })(jQuery);
