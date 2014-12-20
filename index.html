@@ -62,7 +62,9 @@
                             alert("You cancelled.");
                         },
                         confirmButton: "Yes I am",
-                        cancelButton: "No"
+                        cancelButton: "Nope, abort abort!",
+                        confirmButtonClass: "btn-danger",
+                        cancelButtonClass: "btn-info"
                     });
                 </script>
 
@@ -122,6 +124,7 @@
 <li><code>cancelButton</code>: Label of the cancel button</li>
 <li><code>post</code>: If false (default) and no confirm handler is set, redirects the user to the URL of the button/link with a GET request. If true, redirects with a POST request (like a form submission).</li>
 <li><code>confirmButtonClass</code>: HTML class for the confirmation button, defaults to <code>btn-primary</code>.</li>
+<li><code>cancelButtonClass</code>: HTML class for the cancel button, defaults to <code>btn-default</code>.</li>
 </ul>
 <p>Example:</p>
 <pre><code class="language-html">&lt;button class="confirm" type="button"&gt;Delete the comment&lt;/button&gt;</code></pre>
@@ -137,12 +140,14 @@
     confirmButton: "Yes I am",
     cancelButton: "No",
     post: true,
-    confirmButtonClass: "btn-danger"
+    confirmButtonClass: "btn-danger",
+    cancelButtonClass: "btn-default"
 });</code></pre>
 <p>You can also use <code>data-</code> attributes to customize the confirmation dialog:</p>
 <pre><code class="language-html">&lt;button class="confirm" type="button"
         data-text="Do you really want to delete that comment?"
-        data-confirm-button="Yes I am"&gt;
+        data-confirm-button="Yes I am"
+        data-cancel-button="Whoops no"&gt;
     Delete the user
 &lt;/button&gt;</code></pre>
 <pre><code class="language-javascript">$(".confirm").confirm();</code></pre>
@@ -167,7 +172,8 @@ $.confirm({
     confirmButton: "Yes",
     cancelButton: "Cancel",
     post: false,
-    confirmButtonClass: "btn-warning"
+    confirmButtonClass: "btn-warning",
+    cancelButtonClass: "btn-default"
 }</code></pre>
 <h2>Contributing</h2>
 <p>Pull requests and bug reports are welcome! Be aware that you do not need to generate the minified version yourself,
