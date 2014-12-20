@@ -46,6 +46,7 @@ List of the options:
 * `cancelButton`: Label of the cancel button
 * `post`: If false (default) and no confirm handler is set, redirects the user to the URL of the button/link with a GET request. If true, redirects with a POST request (like a form submission).
 * `confirmButtonClass`: HTML class for the confirmation button, defaults to `btn-primary`.
+* `cancelButtonClass`: HTML class for the cancel button, defaults to `btn-default`.
 
 Example:
 
@@ -66,7 +67,8 @@ $(".confirm").confirm({
     confirmButton: "Yes I am",
     cancelButton: "No",
     post: true,
-    confirmButtonClass: "btn-danger"
+    confirmButtonClass: "btn-danger",
+    cancelButtonClass: "btn-default"
 });
 ```
 
@@ -75,7 +77,8 @@ You can also use `data-` attributes to customize the confirmation dialog:
 ```html
 <button class="confirm" type="button"
         data-text="Do you really want to delete that comment?"
-        data-confirm-button="Yes I am">
+        data-confirm-button="Yes I am"
+        data-cancel-button="Whoops no">
     Delete the user
 </button>
 ```
@@ -114,7 +117,8 @@ $.confirm.options = {
     confirmButton: "Yes",
     cancelButton: "Cancel",
     post: false,
-    confirmButtonClass: "btn-warning"
+    confirmButtonClass: "btn-warning",
+    cancelButtonClass: "btn-default"
 }
 ```
 
