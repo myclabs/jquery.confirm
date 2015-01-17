@@ -25,7 +25,21 @@
         this.click(function (e) {
             if($(this).hasClass('isClickConfirmed')){
                 $(this).removeClass('isClickConfirmed');
-                return true;
+                //if post option is available
+                if (options.post) {
+                    //if href attribute is available use it 
+                    if(typeof $(this).attr('href') !== typeof undefined) {
+                        var href = $(this).attr('href');
+                    //else post to the current URL
+                    } else {
+                        var href = '';
+                    }
+                    var form = $('<form method="post" class="hide" action="' + href + '"></form>');
+                    $("body").append(form);
+                    form.submit();
+                } else {
+                    return true;
+                }
             }
             e.preventDefault();
 
