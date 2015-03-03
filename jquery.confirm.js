@@ -55,7 +55,7 @@
                 'cancel-button': 'cancelButton',
                 'confirm-button-class': 'confirmButtonClass',
                 'cancel-button-class': 'cancelButtonClass',
-                'dialog-class': ''
+                'dialog-class': 'dialogClass'
             };
             $.each(dataOptionsMapping, function(attributeName, optionName) {
                 var value = options.button.data(attributeName);
