@@ -38,15 +38,16 @@ Any click on the link will pop up a dialog asking the user to confirm the action
 
 List of the options:
 
-* `text`: Text to display in the dialog
-* `title`: Title of the dialog (can be empty, the dialog will not have a header then)
-* `confirm`: Handler executed when the user confirms
-* `cancel`: Handler executed when the user cancels
-* `confirmButton`: Label of the confirm button
-* `cancelButton`: Label of the cancel button
-* `post`: If false (default) and no confirm handler is set, redirects the user to the URL of the button/link with a GET request. If true, redirects with a POST request (like a form submission).
-* `confirmButtonClass`: HTML class for the confirmation button, defaults to `btn-primary`.
-* `cancelButtonClass`: HTML class for the cancel button, defaults to `btn-default`.
+- `text`: Text to display in the dialog
+- `title`: Title of the dialog (can be empty, the dialog will not have a header then)
+- `confirm`: Handler executed when the user confirms
+- `cancel`: Handler executed when the user cancels
+- `confirmButton`: Label of the confirm button
+- `cancelButton`: Label of the cancel button
+- `post`: If false (default) and no confirm handler is set, redirects the user to the URL of the button/link with a GET request. If true, redirects with a POST request (like a form submission).
+- `confirmButtonClass`: HTML class for the confirmation button, defaults to `btn-primary`.
+- `cancelButtonClass`: HTML class for the cancel button, defaults to `btn-default`.
+- `dialogClass`: HTML class for the dialog, defaults to `modal-dialog`.
 
 Example:
 
@@ -68,7 +69,8 @@ $(".confirm").confirm({
     cancelButton: "No",
     post: true,
     confirmButtonClass: "btn-danger",
-    cancelButtonClass: "btn-default"
+    cancelButtonClass: "btn-default",
+    dialogClass: "modal-dialog modal-lg" // Bootstrap classes for large modal
 });
 ```
 
@@ -118,7 +120,8 @@ $.confirm.options = {
     cancelButton: "Cancel",
     post: false,
     confirmButtonClass: "btn-warning",
-    cancelButtonClass: "btn-default"
+    cancelButtonClass: "btn-default",
+    dialogClass: "modal-dialog"
 }
 ```
 
