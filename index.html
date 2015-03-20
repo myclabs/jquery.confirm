@@ -97,12 +97,12 @@
 
                 <h2>jquery.confirm</h2>
 <p>Confirm dialogs for buttons and links.</p>
-<p><a href="http://isitmaintained.com/project/myclabs/jquery.confirm" title="Average time to resolve an issue"><img alt="Average time to resolve an issue" src="http://isitmaintained.com/badge/resolution/myclabs/jquery.confirm.svg" /></a>
-<a href="http://isitmaintained.com/project/myclabs/jquery.confirm" title="Percentage of issues still open"><img alt="Percentage of issues still open" src="http://isitmaintained.com/badge/open/myclabs/jquery.confirm.svg" /></a></p>
-<p>Chat room: <a href="https://gitter.im/myclabs/jquery.confirm"><img alt="" src="https://badges.gitter.im/myclabs/jquery.confirm.png" /></a></p>
+<p><a href="http://isitmaintained.com/project/myclabs/jquery.confirm" title="Average time to resolve an issue"><img src="http://isitmaintained.com/badge/resolution/myclabs/jquery.confirm.svg" alt="Average time to resolve an issue" /></a>
+<a href="http://isitmaintained.com/project/myclabs/jquery.confirm" title="Percentage of issues still open"><img src="http://isitmaintained.com/badge/open/myclabs/jquery.confirm.svg" alt="Percentage of issues still open" /></a></p>
+<p>Chat room: <a href="https://gitter.im/myclabs/jquery.confirm"><img src="https://badges.gitter.im/myclabs/jquery.confirm.png" alt="" /></a></p>
 <h2>Requirements</h2>
 <ul>
-<li>jQuery > 1.8</li>
+<li>jQuery &gt; 1.8</li>
 <li><a href="http://getbootstrap.com/">Bootstrap 3</a> for the modals</li>
 </ul>
 <p>If you use <a href="http://twitter.github.com/bootstrap/">Bootstrap 2</a>, you can use any 1.x version. From 2.0 and onwards, Bootstrap 3 is required.</p>
@@ -125,6 +125,7 @@
 <li><code>post</code>: If false (default) and no confirm handler is set, redirects the user to the URL of the button/link with a GET request. If true, redirects with a POST request (like a form submission).</li>
 <li><code>confirmButtonClass</code>: HTML class for the confirmation button, defaults to <code>btn-primary</code>.</li>
 <li><code>cancelButtonClass</code>: HTML class for the cancel button, defaults to <code>btn-default</code>.</li>
+<li><code>dialogClass</code>: HTML class for the dialog, defaults to <code>modal-dialog</code>.</li>
 </ul>
 <p>Example:</p>
 <pre><code class="language-html">&lt;button class="confirm" type="button"&gt;Delete the comment&lt;/button&gt;</code></pre>
@@ -141,7 +142,8 @@
     cancelButton: "No",
     post: true,
     confirmButtonClass: "btn-danger",
-    cancelButtonClass: "btn-default"
+    cancelButtonClass: "btn-default",
+    dialogClass: "modal-dialog modal-lg" // Bootstrap classes for large modal
 });</code></pre>
 <p>You can also use <code>data-</code> attributes to customize the confirmation dialog:</p>
 <pre><code class="language-html">&lt;button class="confirm" type="button"
@@ -173,7 +175,8 @@ $.confirm({
     cancelButton: "Cancel",
     post: false,
     confirmButtonClass: "btn-warning",
-    cancelButtonClass: "btn-default"
+    cancelButtonClass: "btn-default",
+    dialogClass: "modal-dialog"
 }</code></pre>
 <h2>Contributing</h2>
 <p>Pull requests and bug reports are welcome! Be aware that you do not need to generate the minified version yourself,
