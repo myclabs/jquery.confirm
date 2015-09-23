@@ -12,7 +12,7 @@
         "confirm"
     ],
     "license": "MIT",
-    "homepage": "http://myclabs.github.io/jquery.confirm/",
+    "homepage": "https://myclabs.github.io/jquery.confirm/",
     "ignore": [
         "**/.*",
         "node_modules",
