@@ -9,7 +9,7 @@
  * @author Marcus Schwarz <msspamfang@gmx.de>
  *
  * @license MIT
- * @url http://myclabs.github.io/jquery.confirm/
+ * @url https://myclabs.github.io/jquery.confirm/
  */
 (function ($) {
 
