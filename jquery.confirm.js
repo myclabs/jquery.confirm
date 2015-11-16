@@ -23,6 +23,24 @@
         }
 
         this.click(function (e) {
+            if($(this).hasClass('isClickConfirmed')){
+                $(this).removeClass('isClickConfirmed');
+                //if post option is available
+                if (options.post) {
+                    //if href attribute is available use it 
+                    if(typeof $(this).attr('href') !== typeof undefined) {
+                        var href = $(this).attr('href');
+                    //else post to the current URL
+                    } else {
+                        var href = '';
+                    }
+                    var form = $('<form method="post" class="hide" action="' + href + '"></form>');
+                    $("body").append(form);
+                    form.submit();
+                } else {
+                    return true;
+                }
+            }
             e.preventDefault();
 
             var newOptions = $.extend({
@@ -68,16 +86,10 @@
         // Default options
         var settings = $.extend({}, $.confirm.options, {
             confirm: function () {
-                var url = e && (('string' === typeof e && e) || (e.currentTarget && e.currentTarget.attributes['href'].value));
-                if (url) {
-                    if (options.post) {
-                        var form = $('<form method="post" class="hide" action="' + url + '"></form>');
-                        $("body").append(form);
-                        form.submit();
-                    } else {
-                        window.location = url;
-                    }
-                }
+                //add isClickConfirmed to continue execution on click again.   
+                $(e.currentTarget).addClass('isClickConfirmed');
+                //click the target again
+                $(e.currentTarget).click();
             },
             cancel: function (o) {
             },
