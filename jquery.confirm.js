@@ -55,7 +55,8 @@
                 'cancel-button': 'cancelButton',
                 'confirm-button-class': 'confirmButtonClass',
                 'cancel-button-class': 'cancelButtonClass',
-                'dialog-class': 'dialogClass'
+                'dialog-class': 'dialogClass',
+                'static': 'static'
             };
             $.each(dataOptionsMapping, function(attributeName, optionName) {
                 var value = options.button.data(attributeName);
@@ -94,7 +95,7 @@
                 '</div>';
         }
         var modalHTML =
-                '<div class="confirmation-modal modal fade" tabindex="-1" role="dialog">' +
+                '<div class="confirmation-modal modal fade" tabindex="-1" role="dialog" '+((settings.static !== false) ? 'data-backdrop="static" data-keyboard="false"' : '')+'>' +
                     '<div class="'+ settings.dialogClass +'">' +
                         '<div class="modal-content">' +
                             modalHeader +
@@ -142,6 +143,7 @@
         post: false,
         confirmButtonClass: "btn-primary",
         cancelButtonClass: "btn-default",
-        dialogClass: "modal-dialog"
+        dialogClass: "modal-dialog",
+        static: false
     }
 })(jQuery);
