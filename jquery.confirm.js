@@ -70,7 +70,7 @@
         var settings = $.extend({}, $.confirm.options, {
             confirm: function () {
                 if (dataOptions.submitForm){
-                    e.target.form.submit();
+                    e.target.closest("form").submit();
                 } else {
                     var url = e && (('string' === typeof e && e) || (e.currentTarget && e.currentTarget.attributes['href'].value));
                     if (url) {
