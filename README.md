@@ -45,6 +45,7 @@ List of the options:
 - `confirmButton`: Label of the confirm button
 - `cancelButton`: Label of the cancel button
 - `post`: If false (default) and no confirm handler is set, redirects the user to the URL of the button/link with a GET request. If true, redirects with a POST request (like a form submission).
+- `submitForm`: If false (default) it has no effect. If true, it submit the form target element.
 - `confirmButtonClass`: HTML class for the confirmation button, defaults to `btn-primary`.
 - `cancelButtonClass`: HTML class for the cancel button, defaults to `btn-default`.
 - `dialogClass`: HTML class for the dialog, defaults to `modal-dialog`.
@@ -119,6 +120,7 @@ $.confirm.options = {
     confirmButton: "Yes",
     cancelButton: "Cancel",
     post: false,
+    submitForm: false,
     confirmButtonClass: "btn-warning",
     cancelButtonClass: "btn-default",
     dialogClass: "modal-dialog"

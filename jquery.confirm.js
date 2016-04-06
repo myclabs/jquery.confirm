@@ -15,7 +15,7 @@
 
     /**
      * Confirm a link or a button
-     * @param [options] {{title, text, confirm, cancel, confirmButton, cancelButton, post, confirmButtonClass}}
+     * @param [options] {{title, text, confirm, cancel, confirmButton, cancelButton, post, submitForm, confirmButtonClass}}
      */
     $.fn.confirm = function (options) {
         if (typeof options === 'undefined') {
@@ -37,7 +37,7 @@
 
     /**
      * Show a confirmation dialog
-     * @param [options] {{title, text, confirm, cancel, confirmButton, cancelButton, post, confirmButtonClass}}
+     * @param [options] {{title, text, confirm, cancel, confirmButton, cancelButton, post, submitForm, confirmButtonClass}}
      * @param [e] {Event}
      */
     $.confirm = function (options, e) {
@@ -52,6 +52,7 @@
                 'title': 'title',
                 'text': 'text',
                 'confirm-button': 'confirmButton',
+                'submit-form': 'submitForm',
                 'cancel-button': 'cancelButton',
                 'confirm-button-class': 'confirmButtonClass',
                 'cancel-button-class': 'cancelButtonClass',
@@ -68,14 +69,18 @@
         // Default options
         var settings = $.extend({}, $.confirm.options, {
             confirm: function () {
-                var url = e && (('string' === typeof e && e) || (e.currentTarget && e.currentTarget.attributes['href'].value));
-                if (url) {
-                    if (options.post) {
-                        var form = $('<form method="post" class="hide" action="' + url + '"></form>');
-                        $("body").append(form);
-                        form.submit();
-                    } else {
-                        window.location = url;
+                if (dataOptions.submitForm){
+                    e.target.form.submit();
+                } else {
+                    var url = e && (('string' === typeof e && e) || (e.currentTarget && e.currentTarget.attributes['href'].value));
+                    if (url) {
+                        if (options.post) {
+                            var form = $('<form method="post" class="hide" action="' + url + '"></form>');
+                            $("body").append(form);
+                            form.submit();
+                        } else {
+                            window.location = url;
+                        }
                     }
                 }
             },
@@ -140,6 +145,7 @@
         confirmButton: "Yes",
         cancelButton: "Cancel",
         post: false,
+        submitForm: false,
         confirmButtonClass: "btn-primary",
         cancelButtonClass: "btn-default",
         dialogClass: "modal-dialog"
