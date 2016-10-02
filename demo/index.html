@@ -85,6 +85,22 @@
 });</code></pre>
                     </td>
                 </tr>
+                <tr>
+                    <td>No cancellation button</td>
+                    <td><button class="btn btn-primary" id="noCancelButton">Click me</button></td>
+                    <td>
+                        <pre>&lt;button class="btn btn-primary" id="noCancelButton"&gt;Click me&lt;/button&gt;</pre>
+                        <pre class="prettyprint"><code>$("#noCancelButton").click(function() {
+    $.confirm({
+        text: "This is a confirmation dialog manually triggered! Please confirm:",
+        cancelButton: false,
+        confirm: function(button) {
+            alert("You just confirmed.");
+        }
+    });
+});</code></pre>
+                    </td>
+                </tr>
             </tbody>
         </table>
 
@@ -114,6 +130,15 @@
                     cancel: function() {
                         alert("You cancelled.");
                     }
+                });
+            });
+            $("#noCancelButton").click(function() {
+                $.confirm({
+                    text: "This is a confirmation dialog manually triggered! Please confirm:",
+                    cancelButton: false,
+                    confirm: function() {
+                        alert("You just confirmed.");
+                    },
                 });
             });
         </script>
