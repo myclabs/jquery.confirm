@@ -42,7 +42,7 @@
      */
     $.confirm = function (options, e) {
         // Do nothing when active confirm modal.
-        if ($('.confirmation-modal').length > 0)
+        if ( typeof options == "undefined" || $('.confirmation-modal').length > 0)
             return;
 
         // Parse options defined with "data-" attributes
