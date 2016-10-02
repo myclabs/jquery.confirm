@@ -41,9 +41,20 @@
      * @param [e] {Event}
      */
     $.confirm = function (options, e) {
+        // Do nothing if no options.
+        if (typeof options == "undefined") return;
+
+        // Nested
+        if (options.nested) {
+            $('.confirmation-modal').on('hidden.bs.modal', function () {
+                options.nested = false;
+                $.confirm(options);
+                return;
+            });
+        }
+        
         // Do nothing when active confirm modal.
-        if ( typeof options == "undefined" || $('.confirmation-modal').length > 0)
-            return;
+        if ($('.confirmation-modal').length > 0) return;
 
         // Parse options defined with "data-" attributes
         var dataOptions = {};
