@@ -85,6 +85,24 @@
 });</code></pre>
                     </td>
                 </tr>
+                <tr>
+                    <td>Modal options</td>
+                    <td><button class="btn btn-primary" id="modalOptions" >Click me</button></td>
+                    <td>
+                        <pre>&lt;button class="btn btn-primary" id="modalOptions"&gt;Click me&lt;/button&gt;</pre>
+                        <pre class="prettyprint"><code>$("#modalOptions").confirm({
+    text: "You can't escape! You are forced to choose!",
+    modalOptionsBackdrop: 'static',
+    modalOptionsKeyboard: false,
+    confirm: function() {
+        alert("You just confirmed.");
+    },
+    cancel: function() {
+        alert("You cancelled.");
+    }
+});</code></pre>
+                    </td>
+                </tr>
             </tbody>
         </table>
 
@@ -115,6 +133,17 @@
                         alert("You cancelled.");
                     }
                 });
+            });
+            $("#modalOptions").confirm({
+                text: "You can't escape! You are forced to choose!",
+                modalOptionsBackdrop: 'static',
+                modalOptionsKeyboard: false,
+                confirm: function() {
+                    alert("You just confirmed.");
+                },
+                cancel: function() {
+                    alert("You cancelled.");
+                }
             });
         </script>
 
