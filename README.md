@@ -49,6 +49,8 @@ List of the options:
 - `confirmButtonClass`: HTML class for the confirmation button, defaults to `btn-primary`.
 - `cancelButtonClass`: HTML class for the cancel button, defaults to `btn-default`.
 - `dialogClass`: HTML class for the dialog, defaults to `modal-dialog`.
+- `modalOptionsBackdrop`: Backdrop option for modal.
+- `modalOptionsKeyboard`: Keyboard option for bootsrap modal.
 
 Example:
 

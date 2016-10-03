@@ -86,6 +86,24 @@
                     </td>
                 </tr>
                 <tr>
+                    <td>Modal options</td>
+                    <td><button class="btn btn-primary" id="modalOptions" >Click me</button></td>
+                    <td>
+                        <pre>&lt;button class="btn btn-primary" id="modalOptions"&gt;Click me&lt;/button&gt;</pre>
+                        <pre class="prettyprint"><code>$("#modalOptions").confirm({
+    text: "You can't escape! You are forced to choose!",
+    modalOptionsBackdrop: 'static',
+    modalOptionsKeyboard: false,
+    confirm: function() {
+        alert("You just confirmed.");
+    },
+    cancel: function() {
+        alert("You cancelled.");
+    }
+});</code></pre>
+                    </td>
+                </tr>
+                <tr>
                     <td>Nested</td>
                     <td><button class="btn btn-primary" id="nested">Click me</button></td>
                     <td>
@@ -147,6 +165,17 @@
                     }
                 });
             });
+            $("#modalOptions").confirm({
+                text: "You can't escape! You are forced to choose!",
+                modalOptionsBackdrop: 'static',
+                modalOptionsKeyboard: false,
+                confirm: function() {
+                    alert("You just confirmed.");
+                },
+                cancel: function() {
+                    alert("You cancelled.");
+                }
+            });
             $("#nested").confirm({
                 title:"First confirmation",
                 text: "Are you sure?",
@@ -176,7 +205,7 @@
     </div>
 
     <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
-    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 
 </body>
 </html>
