@@ -37,7 +37,7 @@
 
     /**
      * Show a confirmation dialog
-     * @param [options] {{title, text, confirm, cancel, confirmButton, cancelButton, post, submitForm, confirmButtonClass}}
+     * @param [options] {{title, text, confirm, cancel, confirmButton, cancelButton, post, submitForm, confirmButtonClass, modalOptionsBackdrop, modalOptionsKeyboard}}
      * @param [e] {Event}
      */
     $.confirm = function (options, e) {
