@@ -15,7 +15,7 @@
 
     /**
      * Confirm a link or a button
-     * @param [options] {{title, text, confirm, cancel, confirmButton, cancelButton, post, submitForm, confirmButtonClass}}
+     * @param [options] {{title, text, confirm, cancel, confirmButton, cancelButton, post, submitForm, confirmButtonClass, modalOptionsBackdrop, modalOptionsKeyboard}}
      */
     $.fn.confirm = function (options) {
         if (typeof options === 'undefined') {
