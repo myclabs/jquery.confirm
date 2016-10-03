@@ -15,7 +15,7 @@
 
     /**
      * Confirm a link or a button
-     * @param [options] {{title, text, confirm, cancel, confirmButton, cancelButton, post, submitForm, confirmButtonClass}}
+     * @param [options] {{title, text, confirm, cancel, confirmButton, cancelButton, post, submitForm, confirmButtonClass, modalOptionsBackdrop, modalOptionsKeyboard}}
      */
     $.fn.confirm = function (options) {
         if (typeof options === 'undefined') {
@@ -37,7 +37,7 @@
 
     /**
      * Show a confirmation dialog
-     * @param [options] {{title, text, confirm, cancel, confirmButton, cancelButton, post, submitForm, confirmButtonClass}}
+     * @param [options] {{title, text, confirm, cancel, confirmButton, cancelButton, post, submitForm, confirmButtonClass, modalOptionsBackdrop, modalOptionsKeyboard}}
      * @param [e] {Event}
      */
     $.confirm = function (options, e) {
@@ -56,11 +56,13 @@
                 'cancel-button': 'cancelButton',
                 'confirm-button-class': 'confirmButtonClass',
                 'cancel-button-class': 'cancelButtonClass',
-                'dialog-class': 'dialogClass'
+                'dialog-class': 'dialogClass',
+                'modal-options-backdrop':'modalOptionsBackdrop',
+                'modal-options-keyboard':'modalOptionsKeyboard'
             };
             $.each(dataOptionsMapping, function(attributeName, optionName) {
                 var value = options.button.data(attributeName);
-                if (value) {
+                if (typeof value != "undefined") {
                     dataOptions[optionName] = value;
                 }
             });
@@ -121,6 +123,14 @@
 
         var modal = $(modalHTML);
 
+        // Apply modal options
+        if (typeof settings.modalOptionsBackdrop != "undefined" || typeof settings.modalOptionsKeyboard != "undefined") {
+            modal.modal({
+                backdrop: settings.modalOptionsBackdrop,
+                keyboard: settings.modalOptionsKeyboard
+            });
+        }
+
         modal.on('shown.bs.modal', function () {
             modal.find(".btn-primary:first").focus();
         });
@@ -151,6 +161,8 @@
         submitForm: false,
         confirmButtonClass: "btn-primary",
         cancelButtonClass: "btn-default",
-        dialogClass: "modal-dialog"
+        dialogClass: "modal-dialog",
+        modalOptionsBackdrop: true,
+        modalOptionsKeyboard: true
     }
 })(jQuery);
