@@ -41,8 +41,14 @@
      * @param [e] {Event}
      */
     $.confirm = function (options, e) {
+        // Log error and exit when no options.
+        if (typeof options == "undefined") {
+            console.error("No options given.");
+            return;
+        }
+
         // Do nothing when active confirm modal.
-        if ( typeof options == "undefined" || $('.confirmation-modal').length > 0)
+        if ($('.confirmation-modal').length > 0)
             return;
 
         // Parse options defined with "data-" attributes
