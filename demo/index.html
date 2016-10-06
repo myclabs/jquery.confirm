@@ -86,6 +86,20 @@
                     </td>
                 </tr>
                 <tr>
+                    <td>No cancellation button</td>
+                    <td><button class="btn btn-primary" id="noCancelButton">Click me</button></td>
+                    <td>
+                        <pre>&lt;button class="btn btn-primary" id="noCancelButton"&gt;Click me&lt;/button&gt;</pre>
+                        <pre class="prettyprint"><code>$("#noCancelButton").confirm({
+    text: "This is a confirmation dialog manually triggered! Please confirm:",
+    cancelButton: false,
+    confirm: function() {
+        alert("You just confirmed.");
+    },
+});</code></pre>
+                    </td>
+                </tr>
+                <tr>
                     <td>Modal options</td>
                     <td><button class="btn btn-primary" id="modalOptions" >Click me</button></td>
                     <td>
@@ -133,6 +147,13 @@
                         alert("You cancelled.");
                     }
                 });
+            });
+            $("#noCancelButton").confirm({
+                text: "This is a confirmation dialog manually triggered! Please confirm:",
+                cancelButton: false,
+                confirm: function() {
+                    alert("You just confirmed.");
+                },
             });
             $("#modalOptions").confirm({
                 text: "You can't escape! You are forced to choose!",
