@@ -98,7 +98,7 @@
             cancel: function (o) {
             },
             button: null
-        }, dataOptions, options);
+        }, options, dataOptions);
 
         // Modal
         var modalHeader = '';
