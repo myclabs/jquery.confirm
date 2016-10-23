@@ -41,8 +41,11 @@
      * @param [e] {Event}
      */
     $.confirm = function (options, e) {
-        // Do nothing if no options.
-        if (typeof options == "undefined") return;
+        // Log error and exit when no options.
+        if (typeof options == "undefined") {
+            console.error("No options given.");
+            return;
+        }
 
         // Nested
         if (options.nested) {
@@ -114,6 +117,13 @@
                     '<h4 class="modal-title">' + settings.title+'</h4>' +
                 '</div>';
         }
+        var cancelButtonHtml = '';
+        if (settings.cancelButton) {
+            cancelButtonHtml =
+                '<button class="cancel btn ' + settings.cancelButtonClass + '" type="button" data-dismiss="modal">' +
+                    settings.cancelButton +
+                '</button>'
+        }
         var modalHTML =
                 '<div class="confirmation-modal modal fade" tabindex="-1" role="dialog">' +
                     '<div class="'+ settings.dialogClass +'">' +
@@ -124,9 +134,7 @@
                                 '<button class="confirm btn ' + settings.confirmButtonClass + '" type="button" data-dismiss="modal">' +
                                     settings.confirmButton +
                                 '</button>' +
-                                '<button class="cancel btn ' + settings.cancelButtonClass + '" type="button" data-dismiss="modal">' +
-                                    settings.cancelButton +
-                                '</button>' +
+                                cancelButtonHtml +
                             '</div>' +
                         '</div>' +
                     '</div>' +

@@ -43,7 +43,7 @@ List of the options:
 - `confirm`: Handler executed when the user confirms
 - `cancel`: Handler executed when the user cancels
 - `confirmButton`: Label of the confirm button
-- `cancelButton`: Label of the cancel button
+- `cancelButton`: Label of the cancel button, if set to false no button at all.
 - `post`: If false (default) and no confirm handler is set, redirects the user to the URL of the button/link with a GET request. If true, redirects with a POST request (like a form submission).
 - `submitForm`: If false (default) it has no effect. If true, it submit the form target element.
 - `confirmButtonClass`: HTML class for the confirmation button, defaults to `btn-primary`.
