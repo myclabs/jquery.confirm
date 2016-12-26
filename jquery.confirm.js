@@ -1,7 +1,7 @@
 /*!
  * jquery.confirm
  *
- * @version 2.3.1
+ * @version 2.7.0
  *
  * @author My C-Labs
  * @author Matthieu Napoli <matthieu@mnapoli.fr>
