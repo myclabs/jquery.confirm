@@ -22,6 +22,12 @@ The library can be downloaded manually or installed with Bower:
 $ bower install jquery-confirm
 ```
 
+Or npm:
+
+```
+$ npm install npm i myclabs.jquery.confirm
+```
+
 ## Usage
 
 ```html
