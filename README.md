@@ -25,7 +25,7 @@ $ bower install jquery-confirm
 Or npm:
 
 ```
-$ npm install npm i myclabs.jquery.confirm
+$ npm install myclabs.jquery.confirm
 ```
 
 ## Usage
