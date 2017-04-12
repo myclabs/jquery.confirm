@@ -2,6 +2,8 @@
 
 Confirm dialogs for buttons and links.
 
+**Looking for a maintainer**, please open an issue
+
 [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/myclabs/jquery.confirm.svg)](http://isitmaintained.com/project/myclabs/jquery.confirm "Average time to resolve an issue")
 [![Percentage of issues still open](http://isitmaintained.com/badge/open/myclabs/jquery.confirm.svg)](http://isitmaintained.com/project/myclabs/jquery.confirm "Percentage of issues still open")
 
