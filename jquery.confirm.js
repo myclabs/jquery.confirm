@@ -15,7 +15,7 @@
 
     /**
      * Confirm a link or a button
-     * @param [options] {{title, text, confirm, cancel, confirmButton, cancelButton, post, submitForm, confirmButtonClass, modalOptionsBackdrop, modalOptionsKeyboard}}
+     * @param [options] {{title, text, confirm, cancel, confirmButton, cancelButton, post, submitForm, confirmButtonClass, modalOptionsBackdrop, modalOptionsKeyboard, nested}}
      */
     $.fn.confirm = function (options) {
         if (typeof options === 'undefined') {
@@ -37,7 +37,7 @@
 
     /**
      * Show a confirmation dialog
-     * @param [options] {{title, text, confirm, cancel, confirmButton, cancelButton, post, submitForm, confirmButtonClass, modalOptionsBackdrop, modalOptionsKeyboard}}
+     * @param [options] {{title, text, confirm, cancel, confirmButton, cancelButton, post, submitForm, confirmButtonClass, modalOptionsBackdrop, modalOptionsKeyboard, nested}}
      * @param [e] {Event}
      */
     $.confirm = function (options, e) {
@@ -47,9 +47,17 @@
             return;
         }
 
+        // Nested
+        if (options.nested) {
+            $('.confirmation-modal').on('hidden.bs.modal', function () {
+                options.nested = false;
+                $.confirm(options);
+                return;
+            });
+        }
+        
         // Do nothing when active confirm modal.
-        if ($('.confirmation-modal').length > 0)
-            return;
+        if ($('.confirmation-modal').length > 0) return;
 
         // Parse options defined with "data-" attributes
         var dataOptions = {};

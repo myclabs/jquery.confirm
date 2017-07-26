@@ -117,6 +117,37 @@
 });</code></pre>
                     </td>
                 </tr>
+                <tr>
+                    <td>Nested</td>
+                    <td><button class="btn btn-primary" id="nested">Click me</button></td>
+                    <td>
+                        <pre>&lt;button class="btn btn-primary" id="nested"&gt;Click me&lt;/button&gt;</pre>
+                        <pre class="prettyprint"><code>$("#nested").confirm({
+    title:"First confirmation",
+    text: "Are you sure?",
+    confirm: function(button) {
+        $.confirm({
+            title: "Second confirmation",
+            text: "This is very dangerous, you shouldn't do it! Are you really really sure?&lsaquo;br&rsaquo;&lsaquo;i&rsaquo;“Only fools never change their mind.” Talleyrand&lsaquo;/i&rsaquo;",
+            confirm: function() {
+                alert("You just confirmed.");
+            },
+            cancel: function() {
+                alert("You cancelled. After first confirmation");
+            },
+            confirmButton: "Yes I am !",
+            cancelButton: "No, it was a mistake",
+            nested: true
+        });
+    },
+    cancel: function(button) {
+        alert("You cancelled.");
+    },
+    confirmButton: "Yes I am",
+    cancelButton: "No"
+});</code></pre>
+                    </td>
+                </tr>
             </tbody>
         </table>
 
@@ -165,6 +196,30 @@
                 cancel: function() {
                     alert("You cancelled.");
                 }
+            });
+            $("#nested").confirm({
+                title:"First confirmation",
+                text: "Are you sure?",
+                confirm: function(button) {
+                    $.confirm({
+                        title: "Second confirmation",
+                        text: "This is very dangerous, you shouldn't do it! Are you really really sure?<br><i>“Only fools never change their mind.” Talleyrand</i>",
+                        confirm: function() {
+                            alert("You just confirmed.");
+                        },
+                        cancel: function() {
+                            alert("You cancelled. After first confirmation");
+                        },
+                        confirmButton: "Yes I am !",
+                        cancelButton: "No, it was a mistake",
+                        nested: true
+                    });
+                },
+                cancel: function(button) {
+                    alert("You cancelled.");
+                },
+                confirmButton: "Yes I am",
+                cancelButton: "No"
             });
         </script>
 

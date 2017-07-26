@@ -59,6 +59,7 @@ List of the options:
 - `dialogClass`: HTML class for the dialog, defaults to `modal-dialog`.
 - `modalOptionsBackdrop`: Backdrop option for modal.
 - `modalOptionsKeyboard`: Keyboard option for bootsrap modal.
+- `nested`: If true allow to nest a confimation on confirmation of a previous one.
 
 Example:
 
