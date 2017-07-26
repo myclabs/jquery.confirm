@@ -81,7 +81,7 @@
                     || (typeof dataOptions.submitForm == "undefined" && options.submitForm)
                     || (typeof dataOptions.submitForm == "undefined" && typeof options.submitForm == "undefined" && $.confirm.options.submitForm)
                 ) {
-                    e.target.closest("form").submit();
+                    $(e.target).closest("form").submit();
                 } else {
                     var url = e && (('string' === typeof e && e) || (e.currentTarget && e.currentTarget.attributes['href'].value));
                     if (url) {
