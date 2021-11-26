@@ -9,6 +9,9 @@ Confirm dialogs for buttons and links.
 
 Chat room: [![](https://badges.gitter.im/myclabs/jquery.confirm.png)](https://gitter.im/myclabs/jquery.confirm)
 
+> **⚠ WARNING: No maintenance intended**  
+> This package is not actively maintained.
+
 ## Requirements
 
 - jQuery > 1.8
